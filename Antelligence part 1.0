@@ -1,3 +1,8 @@
+function Sklas()
+spawn(function()
+Loope2 = true
+While Loope2 == true do
+Wait(0.5)
 local playerliest = {}
 local pacha = game.Players.LocalPlayer.Character.HumanoidRootPart
 local pakla = game.Players:GetDescendants()
@@ -12,7 +17,11 @@ if v.Value == "Queen" then
 print(v.Value,"noted")
 print(v.Parent)
         table.insert(playerliest,v.Parent.Name)
-        v:Added()
 end
 end
 end
+end
+end)
+end
+
+Sklas()
