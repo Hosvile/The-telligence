@@ -1,0 +1,18 @@
+local playerliest = {}
+local pacha = game.Players.LocalPlayer.Character.HumanoidRootPart
+local pakla = game.Players:GetDescendants()
+local owf = game.Players:WaitForChild("AntClass",0.1)
+
+wait(0.5)
+print("hi")
+for _, v in pairs(pakla) do
+
+if v.Name == "AntClass" then
+if v.Value == "Queen" then
+print(v.Value,"noted")
+print(v.Parent)
+        table.insert(playerliest,v.Parent.Name)
+        v:Added()
+end
+end
+end
