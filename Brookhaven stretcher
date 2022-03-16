@@ -1,36 +1,248 @@
+jail = true
+
+
+
+ending = true
+loopa = true
+
+
+function ea()
+    local losa = game.Players.LocalPlayer.Character
+    print("disabling")
+    if ok == true then return end
+    wait()
+    
+    ok = true
+    if game.Players.LocalPlayer.Backpack:FindFirstChild("Stretcher") then
+print("Stretcher in backpack")
+ending = true
+ok = false
+return
+else
+if losa:FindFirstChild("Stretcher") then
+print("found Stretcher")
+ending = true
+ok = false
+return
+end end
+game:GetService("StarterGui"):SetCore("SendNotification", {
+	Title = "10 Seconds before script disables",
+	Text = "Activated due to can't find Stretcher",
+	Duration = 1
+	})
+wait(1)
+  if game.Players.LocalPlayer.Backpack:FindFirstChild("Stretcher") then
+print("Stretcher in backpack")
+ending = true
+ok = false
+return
+else
+if losa:FindFirstChild("Stretcher") then
+print("found Stretcher")
+ending = true
+ok = false
+return
+end end
+game:GetService("StarterGui"):SetCore("SendNotification", {
+	Title = "9 Seconds before script disables",
+	Text = "Activated due to can't find Stretcher",
+	Duration = 1
+	})
+	wait(1)
+	  if game.Players.LocalPlayer.Backpack:FindFirstChild("Stretcher") then
+print("Stretcher in backpack")
+ending = true
+ok = false
+return
+else
+if losa:FindFirstChild("Stretcher") then
+print("found Stretcher")
+ending = true
+ok = false
+return
+end end
+game:GetService("StarterGui"):SetCore("SendNotification", {
+	Title = "8 Seconds before script disables",
+	Text = "Activated due to can't find Stretcher",
+	Duration = 1
+	})
+	wait(1)
+	  if game.Players.LocalPlayer.Backpack:FindFirstChild("Stretcher") then
+print("Stretcher in backpack")
+ending = true
+ok = false
+return
+else
+if losa:FindFirstChild("Stretcher") then
+print("found Stretcher")
+return
+end end
+game:GetService("StarterGui"):SetCore("SendNotification", {
+	Title = "7 Seconds before script disables",
+	Text = "Activated due to can't find Stretcher",
+	Duration = 1
+	})
+wait(1)
+  if game.Players.LocalPlayer.Backpack:FindFirstChild("Stretcher") then
+print("Stretcher in backpack")
+ending = true
+ok = false
+return
+else
+if losa:FindFirstChild("Stretcher") then
+print("found Stretcher")
+ending = true
+ok = false
+return
+end end
+game:GetService("StarterGui"):SetCore("SendNotification", {
+	Title = "6 Seconds before script disables",
+	Text = "Activated due to can't find Stretcher",
+	Duration = 1
+	})
+	wait(1)
+  if game.Players.LocalPlayer.Backpack:FindFirstChild("Stretcher") then
+print("Stretcher in backpack")
+ending = true
+ok = false
+return
+else
+if losa:FindFirstChild("Stretcher") then
+print("found Stretcher")
+ending = true
+ok = false
+return
+end end
+game:GetService("StarterGui"):SetCore("SendNotification", {
+	Title = "5 Seconds before script disables",
+	Text = "Activated due to can't find Stretcher",
+	Duration = 1
+	})
+	wait(1)
+  if game.Players.LocalPlayer.Backpack:FindFirstChild("Stretcher") then
+print("Stretcher in backpack")
+ending = true
+ok = false
+return
+else
+if losa:FindFirstChild("Stretcher") then
+print("found Stretcher")
+ending = true
+ok = false
+return
+end end
+
+game:GetService("StarterGui"):SetCore("SendNotification", {
+	Title = "4 Seconds before script disables",
+	Text = "Activated due to can't find Stretcher",
+	Duration = 1
+	})
+	wait(1)
+	
+  if game.Players.LocalPlayer.Backpack:FindFirstChild("Stretcher") then
+print("Stretcher in backpack")
+ending = true
+ok = false
+return
+else
+if losa:FindFirstChild("Stretcher") then
+print("found Stretcher")
+ending = true
+ok = false
+return
+end end
+game:GetService("StarterGui"):SetCore("SendNotification", {
+	Title = "3 Seconds before script disables",
+	Text = "Activated due to can't find Stretcher",
+	Duration = 1
+	})
+wait(1)
+  if game.Players.LocalPlayer.Backpack:FindFirstChild("Stretcher") then
+print("Stretcher in backpack")
+ending = true
+ok = false
+return
+else
+if losa:FindFirstChild("Stretcher") then
+print("found Stretcher")
+ending = true
+ok = false
+return
+end end
+game:GetService("StarterGui"):SetCore("SendNotification", {
+	Title = "2 Seconds before script disables",
+	Text = "Activated due to can't find Stretcher",
+	Duration = 1
+	})
+	wait(1)
+	  if game.Players.LocalPlayer.Backpack:FindFirstChild("Stretcher") then
+print("Stretcher in backpack")
+ending = true
+ok = false
+return
+else
+if losa:FindFirstChild("Stretcher") then
+print("found Stretcher")
+ending = true
+ok = false
+return
+end end
+game:GetService("StarterGui"):SetCore("SendNotification", {
+	Title = "1 Seconds before script disables",
+	Text = "Activated due to can't find Stretcher",
+	Duration = 1
+	})
+wait(1)
+  if game.Players.LocalPlayer.Backpack:FindFirstChild("Stretcher") then
+print("Stretcher in backpack")
+ending = true
+ok = false
+return
+else
+if losa:FindFirstChild("Stretcher") then
+print("found Stretcher")
+ending = true
+ok = false
+return
+end end
+game:GetService("StarterGui"):SetCore("SendNotification", {
+	Title = "0 Seconds before script disables",
+	Text = "Activated due to can't find Stretcher",
+	Duration = 0.5
+	})
+	ending = false
+	ok = false
+	end
 
 function raw()
  spawn(function()
+local tim    
+print("hi")
 local loca = game.Players.LocalPlayer.Character.HumanoidRootPart
 
-local loc = game.Players.LocalPlayer.Name
+local loc = game.Players.LocalPlayer.Character
 
 local wk = game:GetService("Workspace")
 
+local tog
+print(tog)
 tal = false
 
 loop = true
 
+tog = true
+print(tog)
 local prev
 while loop == true do
 wait()
+
 for i, v in pairs(game.Players:GetPlayers()) do
 local ve = v.Name
 local tol = wk:WaitForChild(v.Name)
 if tol then
 local taw = tol:FindFirstChild("Stretcher")
 if not taw then
-function tak()
--- Script generated by SimpleSpy - credits to exx#9394
-
-local args = {
-    [1] = "PickingTools",
-    [2] = "Stretcher"
-}
-
-game:GetService("ReplicatedStorage").RemoteEvents.T16ool16s:InvokeServer(unpack(args))
-end
-tak()
+print("func")
 end
 tal = true
 local tols = tol:WaitForChild("Stretcher")
@@ -40,8 +252,8 @@ print(tols)
 prev = loca.CFrame
 print(prev)
 wait()
-loca.CFrame = CFrame.new(1000,0,10000)
-wait(0.5)
+loca.CFrame = CFrame.new(100000,100000,1000000)
+wait(0.6)
 -- Script generated by SimpleSpy - credits to exx#9394
 
 local args = {
@@ -53,16 +265,53 @@ game:GetService("ReplicatedStorage").RemoteEvents.T16ool16s:InvokeServer(unpack(
 
 wait()
 loca.CFrame = prev
+local args = {
+    [1] = "PickingTools",
+    [2] = "Stretcher"
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.T16ool16s:InvokeServer(unpack(args))
+end
+if tol then
+if tal == false then
+loop = true
+end
 end
 end
 wait()
 break
 end
 end
-if not tal == true then
-tak()
-end
+
 end)
 end
 
 raw()
+
+local rev = game.Players.LocalPlayer.Backpack.ChildRemoved:Connect(function(ch)
+    print(ch.Name,"rek")
+if ch.Name == "Stretcher" then
+local losa = game.Players.LocalPlayer.Character
+if losa:FindFirstChild("Stretcher") then
+return
+else
+print("oke")
+ea()
+wait()
+end
+wait(10)
+if ending == true then
+print(ea(),"hi",ea,"hia")
+ea()
+print("ye work")
+return
+else
+print("sh")
+print(ch,"ya")
+loop = false
+print(loop)
+tog = false
+end
+end
+ch()
+end)
