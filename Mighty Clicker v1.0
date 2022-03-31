@@ -1586,7 +1586,7 @@ function Togc()
     if ClickSec then
     local framee
 print (ClickSec)
-while getgenv.able == true do
+while getgenv().able == true do
     wait(1/ClickSec)
     if getgenv().able == true then
 print(ClickSec)
