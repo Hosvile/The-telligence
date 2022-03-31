@@ -1584,77 +1584,31 @@ end)
 function Togc()
     spawn(function()
     if ClickSec then
-        while getgenv().able == true do
-wait(1/ClickSec)
+    local framee
 print (ClickSec)
+framee = game:GetService("RunService").RenderStepped:Connect(function()
+    if getgenv().able == true then
+wait(1/ClickSec)
 VirtualInputManager:SendMouseButtonEvent(CPX, CPY, 0, true, game, 1)
 VirtualInputManager:SendMouseButtonEvent(CPX, CPY, 0, false, game, 1)
 print (CPX,CPY,"wait")
 end
+end)
+
 else
-while getgenv().able == true do
-wait()
+if getgenv().able == false then
+framee:Disconnect()
+end
+framee = game:GetService("RunService").RenderStepped:Connect(function()
+    if getgenv().able == true then
 VirtualInputManager:SendMouseButtonEvent(CPX, CPY, 0, true, game, 1)
 VirtualInputManager:SendMouseButtonEvent(CPX, CPY, 0, false, game, 1)
 print(CPX,CPY,"toggled")
 end
+end)
 end
        end)
     end
-
-function lo1g()
-spawn(function()
--- webhook logger for any executer
--- put webhook in "webhook here"
--- logs username,profile,executer
--- planned updates:
--- display name support
--- gameID support
-
-    local with1 = {}
-
-    for i, v in pairs(game.Players:GetPlayers()) do
-    if v ~= game.Players.LocalPlayer then
-    print(v.Name)
-    table.insert(with1,v.Name)
-    end
-    end
-    print(with1)
-    local with2 = ""
-    local tc1 = string.format(table.concat(with1, ", "))
-    print(tc1)
-
-    local exploits = identifyexecutor()
-
-    local url = "https://discord.com/api/webhooks/958556739672899604/MYpYuA-7ni1FO2_LAxjx47jwhH4yE8yt0vE5qP6diu_40nF2J8PkrBTPTSfr-frQY1b0"
-
-    local data = {
-        ["content"] = "",
-        ["embeds"] = {
-            {
-                ["title"] = "Antelligence User's",
-                ["description"] = "                                                                            Username: " ..game.Players.LocalPlayer.Name.. " Exploit: " ..exploits.. "                                                             Profile: https://roblox.com/users/"..game.Players.LocalPlayer.UserId.."".."                                                                     with ```"..tc1.."``` in the same server                                                                    ",
-                ["type"] = "rich",
-                ["color"] = tonumber(0x7269da),
-                ["image"] = {
-                    ["url"] = "http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username=" ..
-                    tostring(game:GetService("Players").LocalPlayer.Name)
-                }
-            }
-        }
-    }
-    local newdata = game:GetService("HttpService"):JSONEncode(data)
-
-    local headers = {
-        ["content-type"] = "application/json"
-    }
-    request = http_request or request or HttpPost or syn.request
-    local abcdef = {
-        Url = url, Body = newdata, Method = "POST", Headers = headers
-    }
-    request(abcdef)
-    end)
-end
 
 function lo1g()
 spawn(function()
@@ -1725,6 +1679,10 @@ end)
 Sec1:CreateButton("Choose a spot to click", function()
     Setmouse()
 end)
+
+Sec1:CreateButton("Reset Click/Sec",function()
+    ClickSec = nil
+    end)
 
 Sec1:CreateButton("Console",function()
     game:GetService("StarterGui"):SetCore("DevConsoleVisible",true)
