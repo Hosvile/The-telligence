@@ -1588,20 +1588,14 @@ function Togc()
 print (ClickSec)
 while getgenv().able == true do
     wait(1/ClickSec)
-    if getgenv().able == true then
 print(ClickSec)
 VirtualInputManager:SendMouseButtonEvent(CPX, CPY, 0, true, game, 1)
 VirtualInputManager:SendMouseButtonEvent(CPX, CPY, 0, false, game, 1)
 print (CPX,CPY,"wait")
 end
-end
-
 else
-if getgenv().able == false then
-framee:Disconnect()
-end
 framee = game:GetService("RunService").RenderStepped:Connect(function()
-    if getgenv().able == true then
+    if getgenv().able == true and ClickSec == nil then
 VirtualInputManager:SendMouseButtonEvent(CPX, CPY, 0, true, game, 1)
 VirtualInputManager:SendMouseButtonEvent(CPX, CPY, 0, false, game, 1)
 print(CPX,CPY,"toggled")
