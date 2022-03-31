@@ -1584,10 +1584,14 @@ end)
 function Togc()
     spawn(function()
         while getgenv().able == true do
-wait()
+if ClickSec then
+wait(1/ClickSec)
+print (ClickSec)
+else
 VirtualInputManager:SendMouseButtonEvent(CPX, CPY, 0, true, game, 1)
 VirtualInputManager:SendMouseButtonEvent(CPX, CPY, 0, false, game, 1)
 print(CPX,CPY,"toggled")
+end
 end
        end)
     end
@@ -1602,7 +1606,7 @@ getgenv().able = false
 	end
 end)
 
-Sec1:CreateButton("Choose a spot in under 2s", function()
+Sec1:CreateButton("Choose a spot to click", function()
     Setmouse()
 end)
 
