@@ -1681,7 +1681,7 @@ Sec1:CreateButton("Choose a spot to click", function()
     Setmouse()
 end)
 
-Sec1:CreateButton("Reset Click/Sec or make it Click/frame again",function()
+Sec1:CreateButton("Click per frame",function()
     ClickSec = nil
     end)
 
@@ -1689,6 +1689,6 @@ Sec1:CreateButton("Console",function()
     game:GetService("StarterGui"):SetCore("DevConsoleVisible",true)
     end)
 
-Sec1:CreateTextbox("Click/sec", function(CPS)
+Sec1:CreateTextbox("Click per second", function(CPS)
     ClickSec = CPS
 end)
