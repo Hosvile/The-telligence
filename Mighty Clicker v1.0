@@ -1579,7 +1579,9 @@ print(CPX,CPY,"clicked")
 dis:Disconnect()
 end)
     end)
-    end
+end
+
+getgenv().Tap = true
 
 function Togc()
     spawn(function()
@@ -1587,6 +1589,7 @@ function Togc()
     local framee
 print (ClickSec)
 while getgenv().able == true do
+getgenv().Tap == false
     wait(1/ClickSec)
 print(ClickSec)
 VirtualInputManager:SendMouseButtonEvent(CPX, CPY, 0, true, game, 1)
@@ -1595,7 +1598,7 @@ print (CPX,CPY,"wait")
 end
 else
 framee = game:GetService("RunService").RenderStepped:Connect(function()
-    if getgenv().able == true and ClickSec == nil then
+    if getgenv().able == true and getgenv().Tap == true then
 VirtualInputManager:SendMouseButtonEvent(CPX, CPY, 0, true, game, 1)
 VirtualInputManager:SendMouseButtonEvent(CPX, CPY, 0, false, game, 1)
 print(CPX,CPY,"toggled")
@@ -1676,6 +1679,7 @@ Sec1:CreateButton("Choose a spot to click", function()
 end)
 
 Sec1:CreateButton("Click per frame",function()
+    getgenv().Tap = true
     ClickSec = nil
     end)
 
