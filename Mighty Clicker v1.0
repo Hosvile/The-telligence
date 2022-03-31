@@ -1586,14 +1586,15 @@ function Togc()
     if ClickSec then
     local framee
 print (ClickSec)
-framee = game:GetService("RunService").RenderStepped:Connect(function()
+while getgenv.able == true do
+    wait(1/ClickSec)
     if getgenv().able == true then
-wait(1/ClickSec)
+print(ClickSec)
 VirtualInputManager:SendMouseButtonEvent(CPX, CPY, 0, true, game, 1)
 VirtualInputManager:SendMouseButtonEvent(CPX, CPY, 0, false, game, 1)
 print (CPX,CPY,"wait")
 end
-end)
+end
 
 else
 if getgenv().able == false then
@@ -1680,7 +1681,7 @@ Sec1:CreateButton("Choose a spot to click", function()
     Setmouse()
 end)
 
-Sec1:CreateButton("Reset Click/Sec",function()
+Sec1:CreateButton("Reset Click/Sec or make it Click/frame again",function()
     ClickSec = nil
     end)
 
