@@ -1,5 +1,4 @@
--- Feel free to edit, modify or use!
-if getgenv().Key == "By Hostile" or "By Hosvile" or "Hosvile" or "Hostile" then
+if getgenv().Key == "Hostile" then
 
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
