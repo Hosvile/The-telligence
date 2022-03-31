@@ -1583,12 +1583,17 @@ end)
 
 function Togc()
     spawn(function()
+    if ClickSec then
         while getgenv().able == true do
-local wet = wait()
-if ClickSec then
-wet = wait(1/ClickSec)
+wait(1/ClickSec)
 print (ClickSec)
+VirtualInputManager:SendMouseButtonEvent(CPX, CPY, 0, true, game, 1)
+VirtualInputManager:SendMouseButtonEvent(CPX, CPY, 0, false, game, 1)
+print (CPX,CPY,"wait")
+end
 else
+while getgenv().able == true do
+wait()
 VirtualInputManager:SendMouseButtonEvent(CPX, CPY, 0, true, game, 1)
 VirtualInputManager:SendMouseButtonEvent(CPX, CPY, 0, false, game, 1)
 print(CPX,CPY,"toggled")
