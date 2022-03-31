@@ -1584,8 +1584,9 @@ end)
 function Togc()
     spawn(function()
         while getgenv().able == true do
+local wet = wait()
 if ClickSec then
-wait(1/ClickSec)
+wet = wait(1/ClickSec)
 print (ClickSec)
 else
 VirtualInputManager:SendMouseButtonEvent(CPX, CPY, 0, true, game, 1)
