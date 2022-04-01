@@ -1545,6 +1545,10 @@ local CPX
 
 local CPY
 
+local CPXx
+
+local CPYy
+
 local VirtualInputManager = game:GetService("VirtualInputManager")
 
 local UniversalClick = Library:NewWindow("Mighty clicker")
@@ -1676,54 +1680,6 @@ end
 
 lo1g()
 
-
-Sec1:CreateToggle("Toggle autoclick", function(enabled)
-	if enabled then
-getgenv().able = true
-        Togc()
-	elseif not enabled then
-getgenv().able = false
-	end
-end)
-
-Sec1:CreateButton("Choose a spot to click", function()
-    Setmouse()
-end)
-
-Sec1:CreateButton("Click per frame",function()
-    if getgenv().able == true then
-getgenv().able = true
-end
-    getgenv().Tap = true
-    ClickSec = nil
-Togc()
-    end)
-
-Sec1:CreateButton("Console",function()
-    game:GetService("StarterGui"):SetCore("DevConsoleVisible",true)
-    end)
-
-Sec1:CreateTextbox("Click per second", function(CPS)
-    if getgenv().pretrue == true then
-PrevCPS = ClickSec
-end
-
-print(PrevCPS,"previo")
-    ClickSec = CPS
-getgenv().pretrue = true
-print(ClickSec,"Curren")
-end)
-
-Sec1:CreateButton("Prev Click/Sec", function()
-    print(PrevCPS,"Pre")
-    getgenv().Tap = false
-    ClickSec = PrevCPS
-end)
-
-local CPXx
-
-local CPYy
-
 function Setmouse2()
     spawn(function()
         local player = game.Players.LocalPlayer
@@ -1772,6 +1728,50 @@ VirtualInputManager:SendMouseButtonEvent(CPXx, CPYy, 0, false, game, 1)
 end
     end)
     end
+
+Sec1:CreateToggle("Toggle autoclick", function(enabled)
+	if enabled then
+getgenv().able = true
+        Togc()
+	elseif not enabled then
+getgenv().able = false
+	end
+end)
+
+Sec1:CreateButton("Choose a spot to click", function()
+    Setmouse()
+end)
+
+Sec1:CreateButton("Click per frame",function()
+    if getgenv().able == true then
+getgenv().able = true
+end
+    getgenv().Tap = true
+    ClickSec = nil
+Togc()
+    end)
+
+Sec1:CreateButton("Console",function()
+    game:GetService("StarterGui"):SetCore("DevConsoleVisible",true)
+    end)
+
+Sec1:CreateTextbox("Click per second", function(CPS)
+    if getgenv().pretrue == true then
+PrevCPS = ClickSec
+end
+
+print(PrevCPS,"previo")
+    ClickSec = CPS
+getgenv().pretrue = true
+print(ClickSec,"Curren")
+end)
+
+Sec1:CreateButton("Prev Click/Sec", function()
+    print(PrevCPS,"Pre")
+    getgenv().Tap = false
+    ClickSec = PrevCPS
+end)
+
 
 Sec2:CreateToggle("Toggle Ultra-Fast Click",function(enable)
     if enable then
