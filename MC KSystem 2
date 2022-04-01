@@ -2,3 +2,4 @@ local whitelistecheck = loadstring(game:HttpGet("https://raw.githubusercontent.c
 if whitelistecheck[getgenv().key] then
 loadstring(game:HttpGet(("https://raw.githubusercontent.com/Hosvile/The-telligence/main/Mighty%20Clicker%20v1.1"),true))()
 end
+--Update
