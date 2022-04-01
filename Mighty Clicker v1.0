@@ -1713,5 +1713,6 @@ end)
 
 Sec1:CreateButton("Prev Click/Sec", function()
     print(PrevCPS,"Pre")
+getgenv().Tap = false
     ClickSec = PrevCPS
 end)
