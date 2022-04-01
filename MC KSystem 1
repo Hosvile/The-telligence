@@ -2,3 +2,4 @@ Keysus = {
 [Hostile] = true;
 [Hosvile] = true;
 }
+return Keysus
