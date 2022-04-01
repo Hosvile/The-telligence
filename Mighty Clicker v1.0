@@ -1760,7 +1760,7 @@ function UFas()
     spawn(function()
         local maxIterations = 250 -- It will run the loop this many times before waiting
 local iterations = 0
-while getgenv().Flash == true
+while getgenv().Flash == true do
 print(iterations)
 VirtualInputManager:SendMouseButtonEvent(CPXx,CPYy, 0, true, game, 1)
 VirtualInputManager:SendMouseButtonEvent(CPXx, CPYy, 0, false, game, 1)
