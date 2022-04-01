@@ -1679,8 +1679,12 @@ Sec1:CreateButton("Choose a spot to click", function()
 end)
 
 Sec1:CreateButton("Click per frame",function()
+    if getgenv().able == true then
+getgenv().able = true
+end
     getgenv().Tap = true
     ClickSec = nil
+Togc()
     end)
 
 Sec1:CreateButton("Console",function()
