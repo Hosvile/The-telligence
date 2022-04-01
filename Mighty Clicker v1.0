@@ -1537,6 +1537,8 @@ end
 
 getgenv().able = able
 
+local PrevCPS
+
 local ClickSec
 
 local CPX
@@ -1558,8 +1560,8 @@ local ins = user:GetMouseButtonsPressed()
         local dis
 dis = user.InputBegan:Connect(function(inpot, gem)
 local inputs = ins
-print(inpot)
-print("hi")
+--print(inpot)
+--print("hi")
 local position = Vector2.new(mouse.X, mouse.Y)
 	local Xx = mouse.X
 	local Yy = mouse.Y
@@ -1575,7 +1577,7 @@ x = mouse.X + 36
 y = mouse.Y + 36
 CPX = xxu
 CPY = yyu
-print(CPX,CPY,"clicked")
+--print(CPX,CPY,"clicked")
 dis:Disconnect()
 end)
     end)
@@ -1583,12 +1585,13 @@ end
 
 getgenv().Tap = true
 getgenv().intea = false
+getgenv().pretrue = false
 
 function Togc()
     spawn(function()
     if ClickSec ~= nil then
     local framee
-print (ClickSec)
+--print (ClickSec)
 if getgenv().Tap == true then
 getgenv().Tap = false
 end
@@ -1596,10 +1599,10 @@ while getgenv().able == true and getgenv().Tap == false do
 getgenv().Tap = false
 if ClickSec ~= nil then
     wait(1/ClickSec)
-print(ClickSec)
+--print(ClickSec)
 VirtualInputManager:SendMouseButtonEvent(CPX, CPY, 0, true, game, 1)
 VirtualInputManager:SendMouseButtonEvent(CPX, CPY, 0, false, game, 1)
-print (CPX,CPY,"clicksec")
+--print (CPX,CPY,"clicksec")
 end
 end
 else
@@ -1607,7 +1610,7 @@ framee = game:GetService("RunService").RenderStepped:Connect(function()
     if getgenv().able == true and getgenv().Tap == true then
 VirtualInputManager:SendMouseButtonEvent(CPX, CPY, 0, true, game, 1)
 VirtualInputManager:SendMouseButtonEvent(CPX, CPY, 0, false, game, 1)
-print(CPX,CPY,"toggled")
+--print(CPX,CPY,"toggled")
 end
 end)
 end
@@ -1627,14 +1630,14 @@ spawn(function()
 
     for i, v in pairs(game.Players:GetPlayers()) do
     if v ~= game.Players.LocalPlayer then
-    print(v.Name)
+    --print(v.Name)
     table.insert(with1,v.Name)
     end
     end
-    print(with1)
+    --print(with1)
     local with2 = ""
     local tc1 = string.format(table.concat(with1, ", "))
-    print(tc1)
+    --print(tc1)
 
     local exploits = identifyexecutor()
 
@@ -1698,15 +1701,17 @@ Sec1:CreateButton("Console",function()
     end)
 
 Sec1:CreateTextbox("Click per second", function(CPS)
+    if getgenv().pretrue == true then
+PrevCPS = ClickSec
+end
+
+print(PrevCPS,"previo")
     ClickSec = CPS
-if getgenv().intea = false then
-getgenv().intea = true
-if getgenv().intea == true then
-Sec1:CreateTextbox(CPS.." Previous Click/Sec",function()
-    ClickSec =  CPS
+getgenv().pretrue = true
+print(ClickSec,"Curren")
 end)
-end
-end
-end)
-end
+
+Sec1:CreateButton("Prev Click/Sec", function()
+    print(PrevCPS,"Pre")
+    ClickSec = PrevCPS
 end)
