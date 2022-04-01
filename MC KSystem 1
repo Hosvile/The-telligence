@@ -1,5 +1,6 @@
-Keysus = {
-[Hostile] = true;
-[Hosvile] = true;
+keys = {
+[Hostile] = true, -- Random key!
+[Hostility] = true,
+[Hosvile] = true
 }
-return Keysus
+return keys
