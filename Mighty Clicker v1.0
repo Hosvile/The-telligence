@@ -1535,7 +1535,7 @@ function Library:NewWindow(name)
     return Sections
 end
 
-getgenv().able = able
+getgenv().able = false
 
 local PrevCPS
 
@@ -1591,7 +1591,7 @@ function Togc()
     spawn(function()
     if ClickSec ~= nil then
     local framee
---print (ClickSec)
+print ("lickSec")
 if getgenv().Tap == true then
 getgenv().Tap = false
 end
@@ -1676,7 +1676,7 @@ lo1g()
 
 Sec1:CreateToggle("Toggle autoclick", function(enabled)
 	if enabled then
-getgenvable = true
+getgenv().able = true
         Togc()
 	elseif not enabled then
 getgenv().able = false
