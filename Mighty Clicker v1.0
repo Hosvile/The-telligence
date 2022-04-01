@@ -1704,6 +1704,7 @@ end)
 
 spawn(function()
 repeat
+wait()
 if getgenv().intea == true then
 Sec1:CreateTextbox(CPS.." Previous Click/Sec",function()
     ClickSec =  CPS
