@@ -1673,7 +1673,7 @@ lo1g()
 
 Sec1:CreateToggle("Toggle autoclick", function(enabled)
 	if enabled then
-getgenv().able = true
+getgenvable = true
         Togc()
 	elseif not enabled then
 getgenv().able = false
@@ -1699,16 +1699,14 @@ Sec1:CreateButton("Console",function()
 
 Sec1:CreateTextbox("Click per second", function(CPS)
     ClickSec = CPS
+if getgenv().intea = false then
 getgenv().intea = true
-end)
-
-spawn(function()
-repeat
-wait()
 if getgenv().intea == true then
 Sec1:CreateTextbox(CPS.." Previous Click/Sec",function()
     ClickSec =  CPS
 end)
 end
-until getgenv().intea == true
+end
+end)
+end
 end)
