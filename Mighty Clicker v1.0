@@ -1581,14 +1581,14 @@ end)
     end)
 end
 
-getgenv().Tap = true
+getgenv().Tap = false
 
 function Togc()
     spawn(function()
     if ClickSec ~= nil then
     local framee
 print (ClickSec)
-while getgenv().able == true do
+while getgenv().able == true and getgenv().Tap == false do
 getgenv().Tap = false
 if ClickSec ~= nil then
     wait(1/ClickSec)
@@ -1599,6 +1599,9 @@ print (CPX,CPY,"wait")
 end
 end
 else
+if getgenv().Tap == false then
+getgenv().Tap = true
+end
 framee = game:GetService("RunService").RenderStepped:Connect(function()
     if getgenv().able == true and getgenv().Tap == true then
 VirtualInputManager:SendMouseButtonEvent(CPX, CPY, 0, true, game, 1)
