@@ -1581,13 +1581,17 @@ end)
     end)
 end
 
-getgenv().Tap = false
+getgenv().Tap = true
+getgenv().intea = false
 
 function Togc()
     spawn(function()
     if ClickSec ~= nil then
     local framee
 print (ClickSec)
+if getgenv().Tap == true then
+getgenv().Tap = false
+end
 while getgenv().able == true and getgenv().Tap == false do
 getgenv().Tap = false
 if ClickSec ~= nil then
@@ -1595,13 +1599,10 @@ if ClickSec ~= nil then
 print(ClickSec)
 VirtualInputManager:SendMouseButtonEvent(CPX, CPY, 0, true, game, 1)
 VirtualInputManager:SendMouseButtonEvent(CPX, CPY, 0, false, game, 1)
-print (CPX,CPY,"wait")
+print (CPX,CPY,"clicksec")
 end
 end
 else
-if getgenv().Tap == false then
-getgenv().Tap = true
-end
 framee = game:GetService("RunService").RenderStepped:Connect(function()
     if getgenv().able == true and getgenv().Tap == true then
 VirtualInputManager:SendMouseButtonEvent(CPX, CPY, 0, true, game, 1)
@@ -1698,4 +1699,15 @@ Sec1:CreateButton("Console",function()
 
 Sec1:CreateTextbox("Click per second", function(CPS)
     ClickSec = CPS
+getgenv().intea = true
+end)
+
+spawn(function()
+repeat
+if getgenv().intea == true then
+Sec1:CreateTextbox(CPS.." Previous Click/Sec",function()
+    ClickSec =  CPS
+end)
+end
+until getgenv().intea == true
 end)
