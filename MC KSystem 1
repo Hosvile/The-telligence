@@ -1,6 +1,6 @@
-keys = {
-[Hostile] = true, -- Random key!
-[Hostility] = true,
-[Hosvile] = true
+local keys = {
+["Hostile"] = true, -- Random key!
+["Hostility"] = true,
+["Hosvile"] = true
 }
 return keys
