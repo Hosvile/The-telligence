@@ -1551,6 +1551,8 @@ local UniversalClick = Library:NewWindow("Mighty clicker")
 
 local Sec1 = UniversalClick:NewSection("Set-up")
 
+local Sec2 = UniversalClick:NewSection("Ultra-Fast")
+
 function Setmouse()
     spawn(function()
         local player = game.Players.LocalPlayer
@@ -1586,6 +1588,7 @@ end
 getgenv().Tap = true
 getgenv().intea = false
 getgenv().pretrue = false
+getgenv().Flash = false
 
 function Togc()
     spawn(function()
@@ -1713,6 +1716,72 @@ end)
 
 Sec1:CreateButton("Prev Click/Sec", function()
     print(PrevCPS,"Pre")
-getgenv().Tap = false
+    getgenv().Tap = false
     ClickSec = PrevCPS
+end)
+
+local CPXx
+
+local CPYy
+
+function Setmouse2()
+    spawn(function()
+        local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+local user = game:GetService("UserInputService")
+local ins = user:GetMouseButtonsPressed()
+        local dis
+dis = user.InputBegan:Connect(function(inpot, gem)
+local inputs = ins
+--print(inpot)
+--print("hi")
+local position = Vector2.new(mouse.X, mouse.Y)
+	local Xx = mouse.X
+	local Yy = mouse.Y
+	 local size = Vector2.new(mouse.ViewSizeX, mouse.ViewSizeY)
+	local sx = mouse.ViewSizeX
+    local sy = mouse.ViewSizeY
+    local xx = Xx / sx
+    local yy = Yy / sy
+local xyu = user:GetMouseLocation()
+xxus = xyu.X
+yyus = xyu.Y
+x = mouse.X + 36
+y = mouse.Y + 36
+CPXx = xxus
+CPYy = yyus
+--print(CPX,CPY,"clicked")
+dis:Disconnect()
+end)
+    end)
+end
+
+function UFas()
+    spawn(function()
+        local maxIterations = 250 -- It will run the loop this many times before waiting
+local iterations = 0
+while getgenv().Flash == true
+print(iterations)
+VirtualInputManager:SendMouseButtonEvent(CPXx,CPYy, 0, true, game, 1)
+VirtualInputManager:SendMouseButtonEvent(CPXx, CPYy, 0, false, game, 1)
+    iterations = iterations + 1 -- Adding onto the iterations
+    if iterations == maxIterations then -- Checking if the threshold is passed
+        game:GetService("RunService").Heartbeat:Wait() -- Waiting
+        iterations = 0 -- Resetting
+    end
+end
+    end)
+    end
+
+Sec2:CreateToggle("Toggle Ultra-Fast Click",function(enable)
+    if enable then
+    getgenv().Flash = true
+UFas()
+elseif not enable then
+getgenv().Flash = false
+end
+end)
+
+Sec2:CreateButton("Choose a spot to click", function()
+    Setmouse2()
 end)
