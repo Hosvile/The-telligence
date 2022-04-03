@@ -2,3 +2,4 @@ local keys = {
 ["Hostile"] = true,
 ["Hosvile"] = true
 }
+return keys
