@@ -1,1 +1,5 @@
-
+local Keyed = {
+["Hostile"] = true,
+["Hosvile"] = true
+}
+return Keyed
