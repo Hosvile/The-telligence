@@ -1,10 +1,9 @@
-getgenv().Key = "Hostile"
-
-local Sectors = {}
 
 local function RemoveSpaces(str)
 return str:gsub(" ", "")
 end
+
+local Devc = game:GetService("StarterGui")
 
 local drage = false
 local drags = true
@@ -25,10 +24,6 @@ local top
 local disc = false
 local topper
 local Downrun = false
-
-local whitelistecheck = loadstring(game:HttpGet("https://raw.githubusercontent.com/Hosvile/The-telligence/main/AB%20KSystem%201", true))()
-
-if whitelistecheck[getgenv().Key] then
 
 local aimer = false
 local renderer = false
@@ -63,6 +58,8 @@ free.Name = "Dash"
 free.BackgroundTransparency = 1
 free.Size = UDim2.new(1,0,1,0)
 free.Parent = cores.Screeny
+
+local Sectors = {}
 
 function Sectors:NewButton(name)
 local imb = Instance.new("ImageButton")
@@ -238,8 +235,6 @@ imb.MouseButton1Up:Connect(function()
     end)
 end
 
-local Toggler = {}
-
 function NewButton:Toggles(names, bools)
 
 if additions < 1 then
@@ -385,24 +380,27 @@ Mouse.Button1Up:Connect(function()
     end
     end)
 
-return Toggler
-end
-
 return NewButton
 end
+
+return Sectors
 end
 end
 
 --[[ Usage
+local Sectors = loadstring(game:HttpGet("https://raw.githubusercontent.com/Hosvile/The-telligence/main/M-Button%20UI%20Library%20v1.0"),"M-Pad")()
+
 local Sector = Sectors:NewButton("Buttons")
 
 local destroy = false
 
 Sector:Toggles("ToggleName",function(t)
 print("Toggled to",t)
+Devc:SetCore("DevConsoleVisible",true)
     end)
 
 Sector:Button("ButtonName",function()
 print("Ran")
+Devc:SetCore(*DevConsoleVisible",true)
 end)
 ]]
