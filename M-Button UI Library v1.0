@@ -382,25 +382,8 @@ Mouse.Button1Up:Connect(function()
 
 return NewButton
 end
+end
+end
 
 return Sectors
-end
-end
 
---[[ Usage
-local Sectors = loadstring(game:HttpGet("https://raw.githubusercontent.com/Hosvile/The-telligence/main/M-Button%20UI%20Library%20v1.0"),"M-Pad")()
-
-local Sector = Sectors:NewButton("Buttons")
-
-local destroy = false
-
-Sector:Toggles("ToggleName",function(t)
-print("Toggled to",t)
-Devc:SetCore("DevConsoleVisible",true)
-    end)
-
-Sector:Button("ButtonName",function()
-print("Ran")
-Devc:SetCore(*DevConsoleVisible",true)
-end)
-]]
