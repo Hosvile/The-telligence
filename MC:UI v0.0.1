@@ -1,13 +1,4 @@
---ctto
 
-
-local Menue = "http://www.roblox.com/asset/?id=9307993023"
-
-local CloseUp = "http://www.roblox.com/asset/?id=9358347621"
-
-local UIs1
-
-local UIs2
 
 local library = {}
 
@@ -15,6 +6,7 @@ local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
 local RunService = game:GetService("RunService")
 
+function CallUI()
 for i,v in next, game.CoreGui:GetChildren() do
 if v:FindFirstChild("UILIB") then
 v:Remove()
@@ -29,6 +21,10 @@ local mouse = game:GetService("Players").LocalPlayer:GetMouse()
 local Mouse = game:GetService("Players").LocalPlayer:GetMouse()
 local is = game:GetService("UserInputService")
 local rs = game:GetService("RunService")
+local Menue = "http://www.roblox.com/asset/?id=9307993023"
+local CloseUp = "http://www.roblox.com/asset/?id=9358347621"
+local UIs1
+local UIs2
 
 togglefalse = nil
 toggletrue = nil
@@ -74,6 +70,9 @@ MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
 MainFrame.BackgroundColor3 = library.mainframe
 if divpos > 0 then
 MainFrame.Position = UDim2.new(divpos, 0, 0.5, 0)
+else
+if getgenv().Addition then
+MainFrame.Position = getgenv().Addition
 else
 MainFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
 UIs1 = MainFrame
@@ -188,6 +187,7 @@ CloseUI.BackgroundTransparency = 1
 CloseUI.Size = UDim2.new(0, 25, 0, 25)
 CloseUI.ImageColor3 = Color3.fromRGB(255, 255, 255)
 CloseUI.ZIndex = 2
+
 
 CloseUI.MouseEnter:connect(function()
     CloseUI.Size = UDim2.new(0, 27, 0, 27)
@@ -850,3 +850,6 @@ end
 return features
 end
 return library
+end
+
+CallUI()
