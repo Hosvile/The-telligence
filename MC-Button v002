@@ -1,6 +1,8 @@
 
 local Sectors = {}
 
+warn("Script has been Executed")
+
 local function RemoveSpaces(str)
 return str:gsub(" ", "")
 end
@@ -38,8 +40,7 @@ local RunService = game:GetService("RunService")
 
 local Mouse = game:GetService("Players").LocalPlayer:GetMouse()
 local cores = game:GetService("CoreGui")
-local lplays = game.Players.LocalPlayer
-local hiddens = get_hidden_gui or gethui()
+local lplays = game:GetService("Players").LocalPlayer
 local hiddenss
 
 for i, v in pairs(cores:GetDescendants()) do
@@ -49,10 +50,12 @@ end
 end
 wait()
 
+warn("Script has been Executed 2x")
+
 if not (cores:FindFirstChild("Screeny")) then
 
 function Sectors:CreateButton()
-    
+local hiddens = get_hidden_gui or gethui()
 ----print("dun")
 local screns = Instance.new("ScreenGui")
 screns.Name = "Screeny"
@@ -76,7 +79,7 @@ free.Parent = screns
 local ButtonType = {}
 
 function ButtonType:Butter(name,action)
-
+local hiddens = get_hidden_gui or gethui()
 local imb = Instance.new("ImageButton")
 local texa = Instance.new("TextLabel")
     --print("ran")
@@ -255,9 +258,8 @@ imb.MouseButton1Up:Connect(function()
 end)
 end
 
-local Toggler = {}
-
 function ButtonType:Toggled(names, bools)
+local hiddens = get_hidden_gui or gethui()
 local tog = Instance.new("ImageButton")
 local taxe = Instance.new("TextLabel")
 
