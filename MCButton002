@@ -61,6 +61,9 @@ wait()
 print("Sectors")
 
 function Sectors:CreateButton()
+
+print("Creating")
+
 local hiddens = get_hidden_gui or gethui()
 ----print("dun")
 local screns = Instance.new("ScreenGui")
@@ -444,6 +447,7 @@ tog.MouseButton1Up:Connect(function()
     end)
 ----print("oks")
 end
-warn("Script has been Executed without any errors")
-return ButtonType
 end
+
+print("Script has been Executed without any errors")
+return ButtonType
