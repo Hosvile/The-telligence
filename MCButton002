@@ -447,7 +447,8 @@ tog.MouseButton1Up:Connect(function()
     end)
 ----print("oks")
 end
-end
-
 print("Script has been Executed without any errors")
 return ButtonType
+end
+
+return Sectors
