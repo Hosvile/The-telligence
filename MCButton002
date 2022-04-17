@@ -49,6 +49,8 @@ local cores = game:GetService("CoreGui")
 local lplays = game:GetService("Players").LocalPlayer
 local hiddenss
 
+print("Checking")
+
 for i, v in pairs(cores:GetDescendants()) do
 if v.Name == "Screeny" then
 v:Destroy()
@@ -56,7 +58,7 @@ end
 end
 wait()
 
-if not (cores:FindFirstChild("Screeny")) then
+print("Sectors")
 
 function Sectors:CreateButton()
 local hiddens = get_hidden_gui or gethui()
@@ -444,6 +446,4 @@ tog.MouseButton1Up:Connect(function()
 end
 warn("Script has been Executed without any errors")
 return ButtonType
-end
-----print("yep")
 end
