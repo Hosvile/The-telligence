@@ -1,0 +1,458 @@
+
+local Sectors = {}
+
+local success, error = pcall(function()
+local function RemoveSpaces(str)
+return str:gsub(" ", "")
+end
+
+local drage = false
+local drags = true
+
+local Booly = false
+local Boolys
+
+local longests
+local tops
+local discs = false
+local toppers
+local Downruns = false
+
+local additions = 0.3
+
+local longest
+local top
+local disc = false
+local topper
+local Downrun = false
+
+local aimer = false
+local renderer = false
+
+local cdown = false
+
+local rs = game:GetService("RunService")
+
+local UserInputService = game:GetService("UserInputService")
+local TweenService = game:GetService("TweenService")
+local RunService = game:GetService("RunService")
+
+local Mouse = game:GetService("Players").LocalPlayer:GetMouse()
+local cores = game:GetService("CoreGui")
+local lplays = game.Players.LocalPlayer
+local hiddens = get_hidden_gui or gethui()
+local hiddenss
+
+for i, v in pairs(cores:GetDescendants()) do
+if v.Name == "Screeny" then
+v:Destroy()
+end
+end
+wait()
+
+if not (cores:FindFirstChild("Screeny")) then
+
+function Sectors:CreateButton()
+    
+----print("dun")
+local screns = Instance.new("ScreenGui")
+screns.Name = "Screeny"
+if hiddenss then
+screns.Parent = hiddens
+else
+screns.Parent = cores
+end
+
+local free = Instance.new("Frame")
+free.Name = "Dash"
+free.BackgroundTransparency = 1
+free.Size = UDim2.new(0.5,0,0.5,0)
+free.SizeConstraint = Enum.SizeConstraint.RelativeYY
+local xx = free.AbsoluteSize.X / 2
+local yy = free.AbsoluteSize.Y / 2
+free.AnchorPoint = Vector2.new(0.5,0.5)
+free.Position = UDim2.new(0.5, -free.AbsoluteSize.X / 2, 0.5, -free.AbsoluteSize.Y / 2)
+free.Parent = screns
+
+local ButtonType = {}
+
+function ButtonType:Butter(name,action)
+
+local imb = Instance.new("ImageButton")
+local texa = Instance.new("TextLabel")
+    --print("ran")
+if hiddens then
+imb.Parent = free
+--print("UI has been Hidden")
+else
+imb.Parent = cores.Screeny.Dash
+--print("UI has not been hidden")
+end
+imb.Name = RemoveSpaces(name)
+imb.BackgroundTransparency = 1
+imb.ImageTransparency = 0.5
+imb.Image = "http://www.roblox.com/asset/?id=9272739106"
+imb.AnchorPoint = Vector2.new(0.5,0.5)
+imb.Size = UDim2.new(0.4,0,0.4,0)
+local x = imb.AbsoluteSize.X
+local y = imb.AbsoluteSize.Y
+imb.Position = UDim2.new(0.5,0,0.5,0)
+getgenv().Buttons_ = imb
+
+texa.Parent = imb
+texa.Text = RemoveSpaces(name)
+texa.Size = imb.Size
+texa.TextSize = 11
+texa.TextColor = BrickColor.new("White")
+texa.TextTransparency = 0.5
+texa.BackgroundTransparency = 1
+
+if additions < 0.5 then
+additions = additions + 0.2
+end
+
+texa.Position = imb.Position
+texa.AnchorPoint = imb.AnchorPoint
+
+imb.MouseButton1Click:Connect(function()
+    if drage == false then
+    if Boolys == false then
+    Boolys = true
+    imb.Image = "http://www.roblox.com/asset/?id=9274728339"
+    coroutine.wrap(function()
+        wait(0.2)
+        imb.Image = "http://www.roblox.com/asset/?id=9274728339"
+        end)()
+    else
+        Boolys = false
+    imb.Image = "http://www.roblox.com/asset/?id=9272739106"
+    end
+    action(imb)
+    end
+    end)
+
+topper = imb.MouseButton1Down:Connect(function()
+    if Downrun == false then
+------print("running")
+    local userInputService = game:GetService("UserInputService")
+
+    function TouchLongPress(TouchPositions, state, gameProcessedEvent)
+    spawn(function()
+        disc = false
+drage = true
+        local UserInputService = game:GetService("UserInputService")
+
+        local gui = imb
+
+        local dragging
+        local dragInput
+        local dragStart
+        local startPos
+        local redlag = 0
+        local Irritate = 2
+
+        local function update(input)
+        if Irritate == redlag then
+        wait()
+        redlag = 0
+        end
+        local delta = input.Position - dragStart
+        gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+        end
+        local nis
+        nis = gui.InputBegan:Connect(function(input)
+            if Irritate == redlag then
+            wait()
+            redlag = 0
+            end
+            if disc == true then
+            nis:Disconnect()
+            end
+            top:Disconnect()
+            if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            dragging = true
+            dragStart = input.Position
+            startPos = gui.Position
+            redlag = redlag + 1
+            imb.ImageTransparency = 0
+
+            Downrun = true
+            input.Changed:Connect(function()
+                if input.UserInputState == Enum.UserInputState.End then
+                dragging = false
+                Downrun = false
+coroutine.wrap(function()
+wait(0.05)
+drage = false
+end)()
+                pcall(function()
+                    top:Disconnect()
+                    end)
+                end
+                end)
+            end
+            end)
+        local niss
+        niss = gui.InputChanged:Connect(function(input)
+            if disc == true then
+            niss:Disconnect()
+            end
+            if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+            dragInput = input
+            end
+            end)
+        local nisss
+        nisss = UserInputService.InputChanged:Connect(function(input)
+            if disc == true then
+            nisss:Disconnect()
+            end
+            if input == dragInput and dragging then
+            update(input)
+            end
+            end)
+        end)
+    end
+    top = userInputService.TouchLongPress:Connect(TouchLongPress)
+    imb.Image = "http://www.roblox.com/asset/?id=9282620326"
+    end
+    end)
+
+local rawpath = cores.Screeny.Dash
+
+Mouse.Button1Up:Connect(function()
+    imb.Image = "http://www.roblox.com/asset/?id=9272739106"
+    pcall(function()
+        if top then
+        top:Disconnect()
+        end
+        if longest then
+        longest:Disconnect()
+        end
+        end)
+    if Downrun == true then
+    Downrun = false
+    end
+    if disc == false then
+    disc = true
+    end
+    end)
+
+imb.MouseButton1Up:Connect(function()
+    imb.Image = "http://www.roblox.com/asset/?id=9272739106"
+    pcall(function()
+        if top then
+        top:Disconnect()
+        end
+        if longest then
+        longest:Disconnect()
+        end
+        end)
+    if Downrun == true then
+    Downrun = false
+    end
+    if disc == false then
+    disc = true
+    end
+end)
+end
+
+local Toggler = {}
+
+function ButtonType:Toggled(names, bools)
+local tog = Instance.new("ImageButton")
+local taxe = Instance.new("TextLabel")
+
+local hiddens = get_hidden_gui or gethui()
+if hiddens then
+tog.Parent = free
+--print("UI has been Hidden")
+else
+tog.Parent = cores.Screeny.Dash
+--print("UI has not been hidden")
+end
+tog.Name = RemoveSpaces(names)
+tog.BackgroundTransparency = 1
+tog.ImageTransparency = 0.5
+tog.Image = "http://www.roblox.com/asset/?id=9272739106"
+tog.AnchorPoint = Vector2.new(0.5,0.5)
+tog.Size = UDim2.new(0.39,0,0.39,0)
+local x = tog.AbsoluteSize.X
+local y = tog.AbsoluteSize.Y
+tog.Position = UDim2.new(0.5,0,0.5,0)
+getgenv().Toggle_ = tog
+
+taxe.Parent = tog
+taxe.Text = RemoveSpaces(names)
+taxe.BackgroundTransparency = 1
+taxe.Size = tog.Size 
+taxe.TextTransparency = 0.5
+taxe.TextSize = 11
+taxe.TextColor = BrickColor.new("White")
+
+if additions < 0.5 then
+additions = additions + 0.2
+end
+
+taxe.AnchorPoint = tog.AnchorPoint
+taxe.Position = tog.Position
+
+tog.MouseButton1Click:Connect(function()
+    if drags == false then
+    if Booly == false then
+    Booly = true
+    tog.Image = "http://www.roblox.com/asset/?id=9274728339"
+    else
+        Booly = false
+    tog.Image = "http://www.roblox.com/asset/?id=9272739106"
+    end
+    bools(Booly)
+    end
+    end)
+
+toppers = tog.MouseButton1Down:Connect(function()
+    if Booly == false then
+    tog.Image = "http://www.roblox.com/asset/?id=9274793304"
+    end
+    if Downruns == false then
+    local userrInputService = game:GetService("UserInputService")
+    function TouchLongPresss(TouchPositions, state, gameProcessedEvent)
+    spawn(function()
+        ----print("up")
+        discs = false
+        local UserInputService = game:GetService("UserInputService")
+        local pathers = tostring(RemoveSpaces(names))
+        local gui = tog
+        local dragging
+        local dragInput
+        local dragStart
+        local startPos
+        local redlag = 0
+        local Irritate = 2
+        local function update(input)
+        if Irritate == redlag then
+        wait()
+        redlag = 0
+        end
+        local delta = input.Position - dragStart
+        gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+        end
+        local niss
+        niss = gui.InputBegan:Connect(function(input)
+            if Irritate == redlag then
+            wait()
+            redlag = 0
+            end
+            if discs == true then
+            niss:Disconnect()
+            end
+            if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            dragging = true
+            dragStart = input.Position
+            startPos = gui.Position
+            redlag = redlag + 1
+            tog.ImageTransparency = 0
+            Downruns = true
+            input.Changed:Connect(function()
+                if input.UserInputState == Enum.UserInputState.End then
+                dragging = false
+                Downruns = false
+coroutine.wrap(function()
+wait(0.05)
+drags = false
+end)()
+                pcall(function()
+                    tops:Disconnect()
+                    end)
+                end
+                end)
+            end
+            end)
+        local nisss
+        nisss = gui.InputChanged:Connect(function(input)
+            if discs == true then
+            nisss:Disconnect()
+            end
+            if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+            dragInput = input
+            end
+            end)
+        local nissss
+        nissss = UserInputService.InputChanged:Connect(function(input)
+            if discs == true then
+            nissss:Disconnect()
+            end
+            if input == dragInput and dragging then
+            update(input)
+            end
+            end)
+        end)
+    end
+    tops = userrInputService.TouchLongPress:Connect(TouchLongPresss)
+    if Booly == false then
+    tog.Image = "http://www.roblox.com/asset/?id=9274793304"
+    end
+    end
+    end)
+
+local rawpath = cores.Screeny.Dash
+
+Mouse.Button1Up:Connect(function()
+    if Booly == false then
+    tog.Image = "http://www.roblox.com/asset/?id=9272739106"
+    end
+    pcall(function()
+        if tops then
+        tops:Disconnect()
+        end
+        if longests then
+        longests:Disconnect()
+        end
+        end)
+    if Downruns == true then
+    Downruns = false
+    end
+    if discs == false then
+    discs = true
+    end
+end)
+
+tog.MouseButton1Up:Connect(function()
+    if Booly == false then
+    tog.Image = "http://www.roblox.com/asset/?id=9272739106"
+    end
+    pcall(function()
+        if tops then
+        tops:Disconnect()
+        end
+        if longests then
+        longests:Disconnect()
+        end
+        end)
+    if Downruns == true then
+    Downruns = false
+    end
+    if discs == false then
+    discs = true
+    end
+    end)
+----print("oks")
+end
+return ButtonType
+end
+----print("yep")
+end
+end)
+
+if not success then
+local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/Hosvile/The-telligence/main/Notificationer", true))()
+
+local notif = Notification.new("error", "Success", "Success body message.")
+notif:changeHeading("Issue") -- Args(<string> NewHeading)
+notif:changeBody("Execution failed...") -- Args(<string> NewBody)
+wait(5)
+notif:delete()
+end
+
+if success then
+warn("Script has been Executed without any errors")
+end
