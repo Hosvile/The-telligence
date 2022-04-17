@@ -468,3 +468,19 @@ notif:delete()
 end)
 
 return Sectors
+
+--[[ Example Use
+local Type = loadstring(game:HttpGet(("https://raw.githubusercontent.com/Hosvile/The-telligence/main/MCButton002"),true))()
+
+table.foreach(Type,print)
+
+local Types = Type:CreateButton()
+
+Types:Butter("Button",function()
+
+end)
+
+Types:Toggled("Toggle",function()
+
+end)
+]]
