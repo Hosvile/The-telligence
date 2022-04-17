@@ -451,4 +451,18 @@ print("Script has been Executed without any errors")
 return ButtonType
 end
 
+local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/Hosvile/The-telligence/main/Notificationer", true))()
+
+local notif = Notification.new("success", "Success", "Success body message.")
+notif:changeHeading("Execution") -- Args(<string> NewHeading)
+notif:changeBody("Executed successfully") -- Args(<string> NewBody)
+wait(5)
+notif:delete()
+
+local notif = Notification.new("info", "Success", "Success body message.")
+notif:changeHeading("Usage") -- Args(<string> NewHeading)
+notif:changeBody("Long press to drag, keep trying") -- Args(<string> NewBody)
+wait(5)
+notif:delete()
+
 return Sectors
