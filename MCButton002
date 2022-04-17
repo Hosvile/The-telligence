@@ -9,8 +9,6 @@
 
 local Sectors = {}
 
-warn("Script has been Executed")
-
 local function RemoveSpaces(str)
 return str:gsub(" ", "")
 end
@@ -57,8 +55,6 @@ v:Destroy()
 end
 end
 wait()
-
-warn("Script has been Executed 2x")
 
 if not (cores:FindFirstChild("Screeny")) then
 
@@ -450,13 +446,4 @@ warn("Script has been Executed without any errors")
 return ButtonType
 end
 ----print("yep")
-end
-
-local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/Hosvile/The-telligence/main/Notificationer", true))()
-
-local notif = Notification.new("success", "Success", "Success body message.")
-notif:changeHeading("Execution") -- Args(<string> NewHeading)
-notif:changeBody("Execution Success") -- Args(<string> NewBody)
-wait(5)
-notif:delete()
 end
