@@ -40,6 +40,8 @@ local cdown = false
 
 local rs = game:GetService("RunService")
 
+local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/Hosvile/The-telligence/main/Notificationer", true))()
+
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
 local RunService = game:GetService("RunService")
@@ -451,8 +453,7 @@ print("Script has been Executed without any errors")
 return ButtonType
 end
 
-local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/Hosvile/The-telligence/main/Notificationer", true))()
-
+task.spawn(function()
 local notif = Notification.new("success", "Success", "Success body message.")
 notif:changeHeading("Execution") -- Args(<string> NewHeading)
 notif:changeBody("Executed successfully") -- Args(<string> NewBody)
@@ -464,5 +465,6 @@ notif:changeHeading("Usage") -- Args(<string> NewHeading)
 notif:changeBody("Long press to drag, keep trying") -- Args(<string> NewBody)
 wait(5)
 notif:delete()
+end)
 
 return Sectors
