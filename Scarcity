@@ -1,0 +1,965 @@
+
+getgenv().falses = 0
+
+getgenv().trues = 0
+
+warn("————Common/Most used functions————")
+
+local clipping = setclipboard or toclipboard or set_clipboard or (Clipboard and Clipboard.set)
+if clipping then
+print("Clipboard · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Clipboard · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+warn("———End of the Category———")
+print("")
+print("")
+warn("————Property functions————")
+
+local setsimulation = setsimulationradius or set_simulation_radius
+if setsimulation then
+print("Set simulation radius · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Set simulation radius · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if isnetworkowner then
+print("Is network owner · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Is network owner · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+local gethidden = gethiddenproperty or get_hidden_property or get_hidden_prop
+if gethidden then
+print("Get hidden property · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Get hidden property · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+local sethidden = sethiddenproperty or set_hidden_property or set_hidden_prop
+if sethidden then
+print("Set hidden property · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Set hidden property · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+local hiddenUI = get_hidden_gui or gethui
+if hiddenUI then
+print("Get hidden gui · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Get hidden gui · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+warn("———End of the Category———")
+print("")
+print("")
+warn("————Debug functions————")
+
+if debug.getprotos or getprotos then
+print("Get protos · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Get protos · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if debug.getproto or getproto then
+print("Get proto · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Get proto · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if debug.setproto or setproto then
+print("Set proto · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Set proto · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if debug.getstack or getstack then
+pride("Get stack · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Get stack · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if debug.setstack or setstack then
+pride("Set stack · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Set stack · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if debug.getconstants or getconstants then
+print("Get constants · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Get constants · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if debug.getconstant or getconstant then
+print("Get constant · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Get constant · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if debug.setconstant or setconstant then
+print("Set constant · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Set constant · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if debug.upvalue or upvalue then
+print("Upvalue · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Upvalue · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if debug.upvalues or upvalues then
+print("Upvalues · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Upvalues · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if debug.setupvalue or setupvalue then
+print("Set upvalue · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Set upvalue · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if debug.setmetatable then
+print("Set metatable · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Set metatable · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if debug.getregistry then
+print("Get registry · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Get registry · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if debug.getinfo then
+print("Get info · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Get info · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+warn("———End of the Category———")
+print("")
+print("")
+warn("————Get functions————")
+
+if getgenv then
+print("Get genv · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Get genv · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if getrenv then
+print("Get renv · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Get renv · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if getassets or getasset then
+print("Get assets · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Get assets · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if getspecialinfo then
+print("Get special info · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Get special info · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if getsenv then
+print("Get senv · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Get senv · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if getcallingscript then
+print("Get calling script · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Get calling script · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if getscriptclosure then
+print("Get script closure · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Get script closure · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if getscripthash then
+print("Get script hash · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Get script hash · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if getgc then
+print("Get gc · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Get gc · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if getreg then
+print("Get reg · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Get reg · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if getinstancee then
+print("Get instance · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Get instance · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if getnilinstances then
+print("Get nil instances · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Get nil instances · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if getscripts then
+print("Get scripts · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Get scripts · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+warn("———End of the Category———")
+print("")
+print("")
+warn("————File/Folder related functions————")
+
+if writefile then
+print("Write file · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Write file · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if readfile then
+print("Read file · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Read file · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if appendfile then
+print("Append file · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Append file · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if loadfile then
+print("Load file · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Load file · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if istfiles then
+print("List files · is implemented ✔️")
+
+trues = trues + 1
+else
+print("List files · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if isfolder then
+print("Is folder · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Is folder · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if makefolder then
+print("Make folder · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Make folder · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if delfolder or deletefolder then
+print("Delete/del folder · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Deleted/del folder · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if delfile or deletefile then
+print("Delete/del file · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Delete/del file · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+warn("———End of the Category———")
+print("")
+print("")
+warn("————Web related functions————")
+local websocket = websocket or WebSocket
+if websocket then
+print("WebSocket · is implemented ✔️")
+
+trues = trues + 1
+else
+print("WebSocket · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+local request = http_request or request or HttpPost or syn.request
+if request then
+print("Request · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Request · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+warn("———End of the Category———")
+print("")
+print("")
+warn("————Unique & Trigger functions————")
+
+local Suc_1, Er_1 = pcall(function()
+if Drawing.new then
+print("Drawing · is implemented ✔️")
+
+trues = trues + 1
+end
+end)
+
+if not Suc_1 then
+print("Drawing · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if getconnections then
+print("Get Connections · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Get Connections · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if fireclickdetector then
+print("Fire click detector · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Fire click detector · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if fireproximityprompt then
+print("Fire proximity prompt · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Fire proximity prompt · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if firesignal then
+print("Fire signal · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Fire signal · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if firetouchinterest then
+print("Fire touch interest · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Fire touch interest · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+warn("———End of the Category———")
+print("")
+print("")
+warn("————Protect functions————")
+
+local protectguis = protect_gui or protectgui
+if protectguis then
+print("Protect Gui · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Protect Gui · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+local unprotectguis = unprotect_gui or unprotectgui 
+if unprotectguis then
+print("Un-Protect Gui · is implemented ✔️")
+
+trues = trues + 1
+end
+
+warn("———End of the Category———")
+print("")
+print("")
+warn("————Hooking functions————")
+
+if hookmetamethod then
+print("Hook metamethod · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Hook metamethod · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+local hookingfunction = hookfunction or hookfunc
+if hookingfunction then
+print("Hook function · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Hook function · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if newcclosure then
+print("New C Closure · is implemented ✔️")
+
+trues = trues + 1
+else
+prin("New C Closure · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+warn("———End of the Category———")
+print("")
+print("")
+warn("————Save functions————")
+
+if saveinstance then
+print("Save instance · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Save instance · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+warn("———End of the Category———")
+print("")
+print("")
+warn("————Key & Mouse functions————")
+
+if keypress then
+print("Key press · is implemented ✔️")
+
+trues = trues + 1
+if keyrelease then
+print("Key release · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Key release · isn't implemented ❌")
+
+falses = falses + 1
+end
+else
+print("Key press · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if mouse1click then
+print("Mouse 1 click · is implemented ✔️")
+
+trues = trues + 1
+if mouse1press then
+print("Mouse 1 press · is implemented ✔️")
+
+trues = trues + 1
+if mouse1release then
+print("Mouse 1 release · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Mouse 1 release · isn't implemented ❌")
+
+falses = falses + 1
+end
+else
+print("Mouse 1 press · isn't implemented ❌")
+
+falses = falses + 1
+end
+else
+print("Mouse 1 click · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if mouse2click then
+print("Mouse 2 click · is implemented ✔️")
+
+trues = trues + 1
+if mouse2press then
+print("Mouse 2 press · is implemented ✔️")
+
+trues = trues + 1
+if mouse2release then
+print("Mouse 2 release · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Mouse 2 release · isn't implemented ❌")
+
+falses = falses + 1
+end
+else
+print("Mouse 2 press · isn't implemented ❌")
+
+falses = falses + 1
+end
+else
+print("Mouse 2 click · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if mousescroll then
+print("Mouse scroll · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Mouse scroll · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if mousemoverel then
+print("Mouse moverel · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Mouse moverel · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if mousemoveabs then
+print("Mouse moveabs · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Mouse moveabs · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+warn("———End of the Category———")
+print("")
+print("")
+warn("————Set functions————")
+
+warn("———End of the Category———")
+print("")
+print("")
+warn("————Checking functions————")
+
+if iscclosure then
+print("Is C Closure · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Is C Closure · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if islclosure then
+print("Is L Closure · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Is L Closure · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+local windowactivity = iswindowactice or windowactive
+if windowactivity then
+print("Is window active · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Is window active · isn't implemented ❌")
+
+falses = falses + 1
+end 
+
+warn("———End of the Category———")
+print("")
+print("")
+warn("————Table functions————")
+
+if getrawmetatable then
+print("Get raw metatable · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Get raw metatable · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if setrawmetatable then
+print("Set raw metatable · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Set raw metatable · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if setreadonly then
+print("Set read only · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Set read only · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if isreadonly then
+print("Is read only · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Is read only · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+warn("———End of the Category———")
+print("")
+print("")
+warn("————Reflection functions————")
+
+if isLua then
+print("Is Lua · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Is Lua · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if checkcaller then
+print("Check caller · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Check caller · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if loadstring then
+print("Loadstring · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Loadstring · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if decompile then
+print("Decompile · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Decompile · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if dumpstring then
+print("Dump string · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Dump string · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+warn("———End of the Category———")
+print("")
+print("")
+warn("————Other functions————")
+
+if getspecialinfo then
+print("Get special info · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Get special info · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if getnamecall then
+print("Get name call · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Get name call · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if setnamecall then
+print("Set name call · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Set name call · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+local setfflags = setfflag or setfastflag
+if setfflags then
+print("Setfflag · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Setfflag · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if setnonreplicatedproperty then
+print("Set non-replicated property · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Set non-replicated property · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+if isLuaU then
+print("Is LuaU · is implemented ✔️")
+
+trues = trues + 1
+else
+print("Is LuaU · isn't implemented ❌")
+
+falses = falses + 1
+end
+
+local falsess = tostring(falses)
+local truess = tostring(trues)
+
+warn("———End of the Category———")
+print("")
+print("")
+warn("——-"..falsess.." is not implemented-——")
+print("")
+warn("——-"..truess.." is implemented-——")
+
+game:GetService("StarterGui"):SetCore("DevConsoleVisible",true)
+
+print("")
+warn("———Use less/ful script for Exploits———\n   —by Creator#1525—\n")
+
+--[[
+is implemented ✔️")
+
+trues = trues + 1
+
+trues = trues + 1
+
+warn("———End of the Category———")
+print("")
+print("")
+warn("
+]]
