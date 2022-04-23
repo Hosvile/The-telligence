@@ -169,6 +169,10 @@ workspace.Gravity = workgrag --off
 	Humanoid:ChangeState(Enum.HumanoidStateType.RunningNoPhysics)
 end
 
+if not getgenv().SpeedFly_ then
+getgenv().SpeedFly_ = 1
+end
+
 local movedirection
 local towalk = false
 local tpwalking = true
@@ -190,7 +194,7 @@ print(chr,hum,"dis")
 break
 end
 		if hum.MoveDirection.Magnitude > 0 then
-				movedirection = chr:TranslateBy(hum.MoveDirection*1)
+				movedirection = chr:TranslateBy(hum.MoveDirection*SpeedFly_)
 		end
 	end
 end)
