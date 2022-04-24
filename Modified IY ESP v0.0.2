@@ -2,7 +2,15 @@ local players = game:GetService("Players")
 
 local lplayer = players.LocalPlayer
 
+local teams = game:GetService("Teams")
+
 local COREGUI = game:GetService("CoreGui")
+
+local TeamCount = 0
+
+for i, v in pairs(teams:GetChildren()) do
+TeamCount = TeamCount + 1
+end
 
 function round(num, numDecimalPlaces)
 local mult = 10^(numDecimalPlaces or 0)
@@ -14,14 +22,17 @@ local rootPart = char:FindFirstChild('HumanoidRootPart') or char:FindFirstChild(
 return rootPart
 end
 
-function callESP()
-for i, plr in pairs(players:GetPlayers()) do
-task.spawn(function()
+function DestroyC(plr)
     for i,v in pairs(COREGUI:GetChildren()) do
     if v.Name == plr.Name..'_ESP' then
     v:Destroy()
     end
     end
+end
+
+function callESP()
+for i, plr in pairs(players:GetPlayers()) do
+task.spawn(function()
 
     if plr.Character and plr.Name ~= players.LocalPlayer.Name or plr ~= lplayer and not COREGUI:FindFirstChild(plr.Name..'_ESP') then
     local ESPholder = Instance.new("Folder")
@@ -37,7 +48,7 @@ task.spawn(function()
     a.AlwaysOnTop = true
     a.ZIndex = 10
     a.Size = n.Size
-    a.Transparency = 0.3
+    a.Transparency = 0.7
     a.Color = plr.TeamColor
     end
     end
@@ -93,7 +104,12 @@ task.spawn(function()
     if COREGUI:FindFirstChild(plr.Name..'_ESP') then
     if plr.Character and getRoot(plr.Character) and plr.Character:FindFirstChildOfClass("Humanoid") and players.LocalPlayer.Character and getRoot(players.LocalPlayer.Character) and players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid") then
     local pos = math.floor((getRoot(players.LocalPlayer.Character).Position - getRoot(plr.Character).Position).magnitude)
-    TextLabel.Text = 'Name: '..plr.Name..' | Health: '..round(plr.Character:FindFirstChildOfClass('Humanoid').Health, 1)..' | Studs: '..pos
+    if TeamCount and TeamCount >= 2 then
+    local teamstring = tostring(plr.Team)
+    TextLabel.Text = 'Name: '..plr.Name..' | Health: '..round(plr.Character:FindFirstChildOfClass('Humanoid').Health, 1)..' | Studs: '..pos..' | Team: '..teamstring
+    else
+        TextLabel.Text = 'Name: '..plr.Name..' | Health: '..round(plr.Character:FindFirstChildOfClass('Humanoid').Health, 1)..' | Studs: '..pos
+    end
     end
     else
         teamChange:Disconnect()
@@ -110,12 +126,22 @@ end
 
 callESP()
 
+
+
 players.ChildAdded:connect(function(addition)
     if addition.ClassName == "Player" then
     for i, v in pairs(players:GetPlayers()) do
-    v.CharacterAdded:connect(function()
-        callESP()
+    local Humanoids = v.Character and v.Character:FindFirstChildOfClass("Humanoid")
+    
+    if Humanoids then
+    Humanoids.Died:connect(function(victim)
+        DestroyC(victim)
         end)
     end
+
+    v.CharacterAdded:connect(function()
+        callESP()
     end)
-end
+    end
+    end
+end)
