@@ -43,7 +43,7 @@ function callESP()
 for i, plr in pairs(players:GetPlayers()) do
 task.spawn(function()
 
-    if plr.Character and plr.Name == players.LocalPlayer.Name or plr == lplayer and not COREGUI:FindFirstChild(plr.Name..'_ESP') then
+    if plr.Character and plr.Name ~= players.LocalPlayer.Name or plr ~= lplayer and not COREGUI:FindFirstChild(plr.Name..'_ESP') then
     local ESPholder = Instance.new("Folder")
     ESPholder.Name = plr.Name..'_ESP'
     ESPholder.Parent = COREGUI
