@@ -1,0 +1,524 @@
+local players = game:GetService("Players")
+
+local lplayer = players.LocalPlayer
+
+local lhum = lplayer.Character:FindFirstChildWhichIsA("Humanoid")
+
+local lhump = lplayer.Character:FindFirstChild("HumanoidRootPart")
+
+local Mouse = lplayer:GetMouse()
+
+local mouse = lplayer:GetMouse()
+
+local TweenService = game:GetService("TweenService")
+
+local RunService = game:GetService("RunService")
+
+getgenv().Called = 0
+
+if Screen_ then
+Screen_:Destroy()
+end
+
+getgenv().Screen_ = nil
+
+function randomString()
+local length = math.random(10,20)
+local array = {}
+for i = 1, length do
+array[i] = string.char(math.random(32, 126))
+end
+return table.concat(array)
+end
+
+local Lib = {}
+
+function Lib:addRound(object)
+local round = Instance.new("UICorner", object)
+round.CornerRadius = UDim.new(0, 8)
+end
+
+function Lib:addRound2(object)
+    local round = Instance.new("UICorner",object)
+    round.CornerRadius = UDim.new(0,6)
+    end
+
+local MS
+
+local CoreGui = game:GetService("CoreGui")
+
+local hidden
+
+if gethui or get_hidden_gui then
+hidden = gethui or get_hidden_gui
+end
+
+function Lib:Window(name)
+local MScreen = Instance.new("ScreenGui")
+local MFrame = Instance.new("Frame")
+local UIPad2 = Instance.new("UIPadding")
+local UIList2 = Instance.new("UIListLayout")
+local TopBar = Instance.new("TextLabel")
+local TBText_1 = Instance.new("TextLabel")
+local CloseUI = Instance.new("ImageButton")
+local Category = Instance.new("ScrollingFrame")
+local ScrollDifference = Instance.new("TextLabel")
+local CatDifference = Instance.new("TextLabel")
+
+getgenv().Screen_ = MScreen
+MScreen.Parent = CoreGui
+
+MFrame.Name = randomString()
+MFrame.Active = false
+MFrame.BackgroundColor3 = Color3.fromRGB(100,100,100)
+MFrame.BackgroundTransparency = 0.1
+MFrame.AnchorPoint = Vector2.new(0.5,0.5)
+MFrame.Position = UDim2.new(0.5,0,0.5,0)
+MFrame.Size = UDim2.new(0.5,0,0.75,0)
+MFrame.BorderSizePixel = 0
+MFrame.Parent = MScreen
+
+Lib:addRound(MFrame)
+
+Category.Name = randomString()
+Category.Active = false
+Category.BackgroundTransparency = 0.1
+Category.BackgroundColor3 = Color3.fromRGB(25,25,25)
+Category.AnchorPoint = Vector2.new(0.5,0.5)
+Category.Position = UDim2.new(0.2,0,0.54,0)
+Category.Size = UDim2.new(0.4,0,0.915,0)
+Category.VerticalScrollBarPosition = "Left"
+Category.BorderSizePixel = 0
+Category.VerticalScrollBarInset = "Always"
+Category.ElasticBehavior = "Always"
+Category.Parent = MFrame
+
+Lib:addRound(Category)
+
+TopBar.BackgroundTransparency = 0.1
+TopBar.Active = false
+TopBar.Text = ""
+TopBar.Size = UDim2.new(1,0,0.08,0)
+TopBar.Position = UDim2.new(0,0,0,0)
+TopBar.BorderColor3 = Color3.fromRGB(25,25,25)
+TopBar.Parent = MFrame
+
+Lib:addRound(TopBar)
+
+TBText_1.TextColor3 = Color3.fromRGB(255,255,255)
+TBText_1.BackgroundColor3 = Color3.fromRGB(8,8,8)
+TBText_1.BackgroundTransparency = 0.1
+TBText_1.Active = false
+TBText_1.Text = name or "Telligences"
+TBText_1.Size = UDim2.new(1,0,0.08,0)
+TBText_1.Position = UDim2.new(0,0,0,0)
+TBText_1.BorderSizePixel = 0
+TBText_1.TextSize = 12
+TBText_1.TextStrokeColor3 = Color3.fromRGB(255,225,255)
+TBText_1.TextStrokeTransparency = 0.5
+TBText_1.Parent = MFrame
+
+Lib:addRound(TBText_1)
+
+CatDifference.TextColor3 = Color3.fromRGB(0,0,0)
+CatDifference.BackgroundColor3 = Color3.fromRGB(75,75,75)
+CatDifference.BackgroundTransparency = 0.8
+CatDifference.Active = false
+CatDifference.Text = ""
+CatDifference.Size = UDim2.new(0.025,0,0.918,0)
+CatDifference.Position = UDim2.new(0,0,0.08,0)
+CatDifference.BorderSizePixel = 0
+CatDifference.TextSize = 12
+CatDifference.TextStrokeColor3 = Color3.fromRGB(255,225,255)
+CatDifference.TextStrokeTransparency = 0.5
+CatDifference.Parent = MFrame
+
+Lib:addRound(CatDifference)
+
+ScrollDifference.TextColor3 = Color3.fromRGB(255,255,255)
+ScrollDifference.BackgroundColor3 = Color3.fromRGB(8,8,8)
+ScrollDifference.BackgroundTransparency = 0.7
+ScrollDifference.Active = false
+ScrollDifference.Text = ""
+ScrollDifference.Size = UDim2.new(0.025,0,0.918,0)
+ScrollDifference.Position = UDim2.new(0.975,0,0.08,0)
+ScrollDifference.BorderSizePixel = 0
+ScrollDifference.TextSize = 12
+ScrollDifference.TextStrokeColor3 = Color3.fromRGB(255,225,255)
+ScrollDifference.TextStrokeTransparency = 0.5
+ScrollDifference.ZIndex = 2
+ScrollDifference.Parent = MFrame
+
+Lib:addRound(ScrollDifference)
+
+UIPad2.Name = randomString()
+UIPad2.Parent = Category -- 2
+UIPad2.PaddingTop = UDim.new(0,5)
+UIPad2.PaddingLeft = UDim.new(0,8)
+
+UIList2.Name = randomString()
+UIList2.Parent = Category -- 2
+UIList2.Padding = UDim.new(0,1)
+
+function Lib:Category()
+local Inside = Instance.new("ScrollingFrame")
+local Categories = Instance.new("TextButton")
+local UIPad = Instance.new("UIPadding")
+local UIList = Instance.new("UIListLayout")
+local Text = Instance.new("TextLabel")
+local parentname
+
+Insides = {}
+
+UIPad.Name = randomString()
+UIPad.Parent = Inside -- 1
+UIPad.PaddingTop = UDim.new(0,5)
+UIPad.PaddingLeft = UDim.new(0,8)
+
+UIList.Name = randomString()
+UIList.Parent = Inside -- 1
+UIList.Padding = UDim.new(0,1)
+
+Inside.Name = randomString()
+Inside.Active = false
+Inside.BackgroundTransparency = 0
+Inside.BackgroundColor3 = Color3.fromRGB(35,35,35)
+Inside.AnchorPoint = Vector2.new(0.5,0.5)
+Inside.Position = UDim2.new(0.7,0,0.54,0)
+Inside.Size = UDim2.new(0.6,0,0.915,0)
+Inside.BorderSizePixel = 0
+Inside.VerticalScrollBarInset = "Always"
+Inside.ElasticBehavior = "Always"
+Inside.CanvasSize = UDim2.new(0,0,0,0)
+Inside.SizeConstraint = "RelativeXY"
+Inside.Parent = MFrame
+
+Lib:addRound(Inside)
+
+parentname = Inside.Name
+
+Inside.ChildAdded:Connect(function(child)
+    Inside.CanvasSize = UDim2.new(0,0,0,UIList.AbsoluteContentSize.Y + child.Size.Y.Offset + UIList.Padding.Offset + 40)
+end)
+
+table.insert(Insides,Inside)
+
+getgenv().Called = getgenv().Called + 1
+if getgenv().Called >= 2 then
+print(called)
+Inside.Visible = false
+for i, v in pairs(Inside:GetChildren()) do
+if v.ClassName ~= "UIPadding" and v.ClassName ~= "UIListLayout" and v.ClassName ~= "UICorner" then
+v.Visible = false
+end
+end
+end
+
+Categories.TextColor3 = Color3.fromRGB(255,255,255)
+Categories.BackgroundColor3 = Color3.fromRGB(8,8,8)
+Categories.BackgroundTransparency = 0
+Categories.Active = false
+Categories.Text = label or "Button"
+Categories.Size = UDim2.new(0.97,0,0.16,0)
+Categories.Position = UDim2.new(0,0,0,0)
+Categories.BorderSizePixel = 0
+Categories.TextSize = 12
+Categories.TextStrokeColor3 = Color3.fromRGB(255,225,255)
+Categories.TextStrokeTransparency = 0.5
+Categories.SizeConstraint = "RelativeXX"
+Categories.Parent = Category
+
+Lib:addRound(Categories)
+
+function Click()
+for i, ins in pairs(Insides) do
+ins.Visible = false
+for i, v in pairs(ins:GetChildren()) do
+if v.ClassName ~= "UIPadding" and v.ClassName ~= "UIListLayout" and v.ClassName ~= "UICorner" then
+v.Visible = false
+end
+end
+print(ins)
+end
+for i, v in pairs(Inside:GetChildren()) do
+if v.ClassName ~= "UIPadding" and v.ClassName ~= "UIListLayout" and v.ClassName ~= "UICorner" then
+v.Visible = true
+end
+end
+Inside.Visible = true
+end
+
+Categories.MouseButton1Click:Connect(Click)
+
+local Category = {}
+
+function Category:Create()
+local Features = {}
+
+function Features:Button(label,cb)
+local Imb = Instance.new("TextButton")
+local Text = Instance.new("TextLabel")
+
+Imb.TextColor3 = Color3.fromRGB(255,255,255)
+Imb.BackgroundColor3 = Color3.fromRGB(8,8,8)
+Imb.BackgroundTransparency = 0.1
+Imb.Active = false
+Imb.Text = label or "Button"
+Imb.Size = UDim2.new(0.97,0,0.1,0)
+Imb.Position = UDim2.new(0,0,0,0)
+Imb.BorderSizePixel = 0
+Imb.TextSize = 12
+Imb.TextStrokeColor3 = Color3.fromRGB(255,225,255)
+Imb.TextStrokeTransparency = 0.5
+Imb.SizeConstraint = "RelativeXX"
+Imb.Parent = Inside
+
+Lib:addRound(Imb)
+
+function Click()
+if cb ~= nil then
+
+else
+game:GetService("StarterGui"):SetCore("DevConsoleVisible",true)
+end
+end
+
+Imb.MouseButton1Click:Connect(Click)
+end
+
+function Features:Toggle(label,state,cb)
+local Imb = Instance.new("TextButton")
+local Text = Instance.new("TextLabel")
+local ToggleBox = Instance.new("TextLabel")
+local Checked = Instance.new("TextLabel")
+local Checker = Instance.new("TextLabel")
+local state = state or false
+cb = cb or function() end
+
+Imb.TextColor3 = Color3.fromRGB(255,255,255)
+Imb.BackgroundColor3 = Color3.fromRGB(8,8,8)
+Imb.BackgroundTransparency = 0.1
+Imb.Active = false
+Imb.Text = label or "Button"
+Imb.Size = UDim2.new(0.97,0,0.1,0)
+Imb.Position = UDim2.new(0,0,0,0)
+Imb.BorderSizePixel = 0
+Imb.TextSize = 12
+Imb.TextStrokeColor3 = Color3.fromRGB(255,225,255)
+Imb.TextStrokeTransparency = 0.5
+Imb.SizeConstraint = "RelativeXX"
+Imb.Parent = Inside
+
+Lib:addRound(Imb)
+
+ToggleBox.TextColor3 = Color3.fromRGB(255,255,255)
+ToggleBox.BackgroundColor3 = Color3.fromRGB(80,80,80)
+ToggleBox.BackgroundTransparency = 0
+ToggleBox.Active = false
+ToggleBox.Text = ""
+ToggleBox.Size = UDim2.new(0.08,0,0.08,0)
+ToggleBox.Position = UDim2.new(0.9,0,0.125,0)
+ToggleBox.BorderSizePixel = 0.5
+ToggleBox.TextSize = 12
+ToggleBox.TextStrokeColor3 = Color3.fromRGB(255,225,255)
+ToggleBox.TextStrokeTransparency = 0.5
+ToggleBox.SizeConstraint = "RelativeXX"
+ToggleBox.Parent = Imb
+ToggleBox.ZIndex = 1
+
+Lib:addRound(ToggleBox)
+
+Checked.TextColor3 = Color3.fromRGB(255,255,255)
+Checked.BackgroundColor3 = Color3.fromRGB(8,8,8)
+Checked.BackgroundTransparency = 0
+Checked.Active = false
+Checked.Text = ""
+Checked.Size = UDim2.new(0.9,0,0.9,0)
+Checked.Position = UDim2.new(0.06,0,0.05,0)
+Checked.BorderSizePixel = 0
+Checked.TextSize = 12
+Checked.TextStrokeColor3 = Color3.fromRGB(255,225,255)
+Checked.TextStrokeTransparency = 0
+Checked.SizeConstraint = "RelativeXY"
+Checked.Parent = ToggleBox
+Checked.ZIndex = 1
+
+Lib:addRound2(Checked)
+
+Checker.TextColor3 = Color3.fromRGB(255,255,255)
+Checker.BackgroundColor3 = Color3.fromRGB(0,150,0)
+Checker.BackgroundTransparency = 1
+Checker.Active = false
+Checker.Text = "✓"
+Checker.TextTransparency = 1
+Checker.Size = UDim2.new(0.85,0,0.85,0)
+Checker.Position = UDim2.new(0.075,0,0.075,0)
+Checker.BorderSizePixel = 0
+Checker.TextSize = 18
+Checker.TextStrokeColor3 = Color3.fromRGB(255,225,255)
+Checker.TextStrokeTransparency = 0.5
+Checker.SizeConstraint = "RelativeXX"
+Checker.ZIndex = 1
+Checker.Parent = ToggleBox
+
+Lib:addRound2(Checker)
+
+local TweenInfo = TweenInfo.new(0.16, Enum.EasingStyle.Quart, Enum.EasingDirection.In)
+
+local Stutter = {
+    TextSize = 25,
+    TextTransparency = 0.15
+}
+
+local Stutter2 = {
+    TextSize = 18,
+    TextTransparency = 0
+}
+
+local Tweener = {
+    TextSize = 18,
+    BackgroundTransparency = 0,
+    TextTransparency = 0
+}
+
+local Closer = {
+    TextSize = 18,
+    BackgroundTransparency = 1,
+    TextTransparency = 1
+}
+
+local Stut = TweenService:Create(Checker, TweenInfo, Stutter)
+local Stut2 = TweenService:Create(Checker, TweenInfo, Stutter2)
+local Tween = TweenService:Create(Checker, TweenInfo, Tweener)
+local Off = TweenService:Create(Checker, TweenInfo, Closer)
+
+if state then
+task.spawn(function()
+if state then
+Tween:Play()
+else
+Off:Play()
+end
+end)
+
+task.spawn(function()
+while state do
+wait(0.2)
+Stut:Play()
+wait(0.2)
+Stut2:Play()
+wait()
+if not state or state == false then
+Off:Play()
+break
+end
+end
+end)
+end
+
+function Click()
+task.spawn(function()
+state = not state
+cb(state)
+end)
+
+task.spawn(function()
+if state then
+Tween:Play()
+else
+Off:Play()
+end
+end)
+
+task.spawn(function()
+while state do
+wait(0.2)
+Stut:Play()
+wait(0.2)
+Stut2:Play()
+wait()
+if not state or state == false then
+Off:Play()
+break
+end
+end
+end)
+end
+
+function Checkering()
+    if state == false or not state then
+Off:Play()
+end
+    end
+
+task.spawn(function()
+RunService.RenderStepped:Connect(Checkering)
+end)
+
+Imb.MouseButton1Click:Connect(Click)
+end
+
+function Features:Input(label,cb)
+local InputContainer = Instance.new("TextBox")
+InputContainer.Name = "Input"
+InputContainer.BackgroundColor3 = Color3.fromRGB(10,15,10)
+InputContainer.BorderSizePixel = 0
+InputContainer.TextColor3 = Color3.fromRGB(100,100,100)
+InputContainer.Size = UDim2.new(0.97, 0, 0.1, 0)
+InputContainer.Text = label or "Input"
+InputContainer.PlaceholderText = "Enter to confirm!"
+InputContainer.MultiLine = false
+InputContainer.Parent = Inside
+getgenv().Input_ = InputContainer
+
+Lib:addRound2(InputContainer)
+end
+
+function Features:Slider(label,default,cb)
+
+end
+
+return Features
+end
+return Category
+end
+return Lib
+end
+
+local Abc = Lib:Window("Telligences")
+
+local Bcd = Abc:Category()
+
+local Cde = Abc:Category()
+
+local Def = Bcd:Create()
+
+local Efg = Cde:Create()
+
+for i = 2, 0, -1 do
+Def:Toggle(randomString(),true,function(t)
+    while wait() do end
+end)
+
+Def:Button(randomString(),function()
+    while wait() do end
+end)
+
+Def:Toggle(randomString(),function()
+    while wait() do end
+end)
+
+Def:Input(randomString(),function(t)
+    
+end)
+end
+
+for i, v in pairs(Insides) do
+print(i,v)
+end
+
+--[[
+Abc:Button("ah",function()
+Image = "http://www.roblox.com/asset/?id=5840446794"
+local DexToggled2 = TweenService:Create(FToggle1_1, DexInfo, Dex_2)
+end)]]
