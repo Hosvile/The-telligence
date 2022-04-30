@@ -482,43 +482,5 @@ return Features
 end
 return Category
 end
+end
 return Lib
-end
-
-local Abc = Lib:Window("Telligences")
-
-local Bcd = Abc:Category()
-
-local Cde = Abc:Category()
-
-local Def = Bcd:Create()
-
-local Efg = Cde:Create()
-
-for i = 2, 0, -1 do
-Def:Toggle(randomString(),true,function(t)
-    while wait() do end
-end)
-
-Def:Button(randomString(),function()
-    while wait() do end
-end)
-
-Def:Toggle(randomString(),function()
-    while wait() do end
-end)
-
-Def:Input(randomString(),function(t)
-    
-end)
-end
-
-for i, v in pairs(Insides) do
-print(i,v)
-end
-
---[[
-Abc:Button("ah",function()
-Image = "http://www.roblox.com/asset/?id=5840446794"
-local DexToggled2 = TweenService:Create(FToggle1_1, DexInfo, Dex_2)
-end)]]
