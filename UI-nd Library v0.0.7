@@ -1,0 +1,1360 @@
+local players = game:GetService("Players")
+
+local lplayer = players.LocalPlayer
+
+local lhum = lplayer.Character:FindFirstChildWhichIsA("Humanoid")
+
+local lhump = lplayer.Character:FindFirstChild("HumanoidRootPart")
+
+local Mouse = lplayer:GetMouse()
+
+local mouse = lplayer:GetMouse()
+
+local TweenService = game:GetService("TweenService")
+
+local UserInputService = game:GetService("UserInputService")
+
+local RunService = game:GetService("RunService")
+
+local Insides = {}
+
+getgenv().Called = 0
+
+if Screen_ then
+for i, v in pairs(Screen_:GetDescendants()) do
+v:Destroy()
+end
+Screen_:Destroy()
+end
+
+if Screens_ then
+for i, v in pairs(Screens_:GetDescendants()) do
+v:Destroy()
+end
+Screens_:Destroy()
+end
+
+if Scathe_ then
+for i, v in pairs(Scathe_:GetDescendants()) do
+v:Destroy()
+end
+Scathe_:Destroy()
+end
+
+getgenv().Screen_ = nil
+
+getgenv().Screens_ = nil
+
+function randomString()
+local length = math.random(10,20)
+local array = {}
+for i = 1, length do
+array[i] = string.char(math.random(32, 126))
+end
+return table.concat(array)
+end
+
+local Lib = {}
+
+function Lib:addRound(object)
+local round = Instance.new("UICorner", object)
+round.CornerRadius = UDim.new(0, 8)
+end
+
+function Lib:addRound2(object)
+local round = Instance.new("UICorner",object)
+round.CornerRadius = UDim.new(0,6)
+end
+
+local MS
+
+local CoreGui = game:GetService("CoreGui")
+
+local hidden
+
+if gethui or get_hidden_gui then
+hidden = gethui or get_hidden_gui
+end
+
+local RunServices = game:GetService("RunService")
+
+if RunServices:IsStudio() then
+CoreGui = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+elseif RunServices:IsClient() then
+CoreGui = game:GetService("CoreGui")
+end
+
+local Ts = game:GetService("TweenService")
+
+local Warning_ = "http://www.roblox.com/asset/?id=3192540038"
+
+local Success_ = "http://www.roblox.com/asset/?id=279548030"
+
+local Error_ = "http://www.roblox.com/asset/?id=2022095309"
+
+local ScreenGuis = Instance.new("ScreenGui")
+
+getgenv().Scathe_ = ScreenGuis
+
+local Frame_ = Instance.new("Frame")
+
+local List = Instance.new("UIListLayout",Frame_)
+
+local Icon_ = Instance.new("ImageLabel")
+
+local CProvider = game:GetService("ContentProvider")
+CProvider:PreloadAsync({
+    Success_,Warning_,Error_
+})
+
+function Lib:Notification(types, name, content,time)
+task.spawn(function()
+    local notification = Instance.new("Frame")
+    local UICorner = Instance.new("UICorner")
+    local bottomFrame = Instance.new("Frame")
+    local bottomFrame_UICorner = Instance.new("UICorner")
+    local time = time or 4
+    local notificationName = Instance.new("TextLabel")
+    local notificationContent = Instance.new("TextLabel")
+    local Icon = Instance.new("ImageLabel")
+    local Hash_ = string.len(tostring(content))
+    local Scaler = false
+    if Hash_ >= 20 then
+    Scaler = true
+    else
+        Scaler = false
+    end
+
+    ScreenGuis.Parent = CoreGui
+    ScreenGuis.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+    ScreenGuis.Enabled = true
+
+    Frame_.AnchorPoint = Vector2.new(0.5,0.5)
+    Frame_.Position = UDim2.new(0.5,0,0.5,0)
+    Frame_.Size = UDim2.new(1,0,1.09,0)
+    Frame_.BackgroundTransparency = 1
+    Frame_.Parent = ScreenGuis
+
+    List.Padding = UDim.new(0,5)
+    List.HorizontalAlignment = "Center"
+
+    notification.Name = "notification"
+    notification.Parent = Frame_
+    notification.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+    notification.BorderSizePixel = 0
+    notification.AnchorPoint = Vector2.new(0.5,0.5)
+    notification.Position = UDim2.new(0.5, 0, 0, 0)
+    notification.Size = UDim2.new(0, 363, 0, 72)
+    notification.ZIndex = 10
+
+    UICorner.CornerRadius = UDim.new(0, 3)
+    UICorner.Parent = notification
+
+    bottomFrame.Name = "bottomFrame"
+    bottomFrame.Parent = notification
+    bottomFrame.BackgroundColor3 = Color3.fromRGB(38, 38, 38)
+    bottomFrame.BorderSizePixel = 0
+    bottomFrame.Position = UDim2.new(0, 0, 0.665449977, 0)
+    bottomFrame.Size = UDim2.new(0, 362, 0, 24)
+    bottomFrame.ZIndex = 10
+
+    bottomFrame_UICorner.CornerRadius = UDim.new(0, 3)
+    bottomFrame_UICorner.Parent = bottomFrame
+
+    notificationName.Name = "notificationName"
+    notificationName.Parent = notification
+    notificationName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    notificationName.BackgroundTransparency = 1.000
+    notificationName.Position = UDim2.new(0.140495867, 0, 0.0985915512, 0)
+    notificationName.Size = UDim2.new(0, 300, 0, 17)
+    notificationName.Font = Enum.Font.GothamBold
+    notificationName.Text = tostring(name)
+    notificationName.TextScaled = true
+    notificationName.TextColor3 = Color3.fromRGB(255, 255, 255)
+    notificationName.TextSize = 13.000
+    notificationName.TextXAlignment = Enum.TextXAlignment.Left
+    notificationName.TextYAlignment = Enum.TextYAlignment.Top
+    notificationName.ZIndex = 10
+
+    notificationContent.Name = "notificationContent"
+    notificationContent.Parent = notification
+    notificationContent.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    notificationContent.BackgroundTransparency = 1.000
+    notificationContent.Position = UDim2.new(0.140495867, 0, 0.309663534, 0)
+    notificationContent.Size = UDim2.new(0, 312, 0, 26)
+    notificationContent.Font = Enum.Font.Gotham
+    notificationContent.Text = tostring(content)
+    notificationContent.TextScaled = Scaler
+    notificationContent.TextColor3 = Color3.fromRGB(150, 150, 150)
+    notificationContent.TextSize = 13.000
+    notificationContent.TextXAlignment = Enum.TextXAlignment.Left
+    notificationContent.ZIndex = 10
+
+    local typer = tostring(types)
+    local types = string.lower(typer)
+
+    if types == "warning" or types == "warn" then
+    Icon.Name = "warningIcon"
+    Icon.Parent = notification
+    Icon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Icon.BackgroundTransparency = 1.000
+    Icon.Position = UDim2.new(0.0192837473, 0, 0.0985912755, 0)
+    Icon.Size = UDim2.new(0, 38, 0, 40)
+    Icon.Image = Warning_
+    elseif types == "success" or types == "check" then
+    Icon.Name = "SuccessIcon"
+    Icon.Parent = notification
+    Icon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Icon.BackgroundTransparency = 1.000
+    Icon.Position = UDim2.new(0.0192837473, 0, 0.0985912755, 0)
+    Icon.Size = UDim2.new(0, 38, 0, 38)
+    Icon.Image = Success_
+    elseif types == "error" or types == "fail" then
+    Icon.Name = "SuccessIcon"
+    Icon.Parent = notification
+    Icon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Icon.BackgroundTransparency = 1.000
+    Icon.Position = UDim2.new(0.0302837473, 0, 0.1085912755, 0)
+    Icon.Size = UDim2.new(0, 33, 0, 33)
+    Icon.Image = Error_
+    end
+
+    local TweenInfo = TweenInfo.new(0.5,Enum.EasingStyle.Sine,Enum.EasingDirection.Out)
+
+    local Tween_ = Ts:Create(notification, TweenInfo, {
+        Position = UDim2.new(0.5, 0, 0.005, 0)})
+    local Tweened_ = Ts:Create(notification, TweenInfo, {
+        Position = UDim2.new(0.5, 0, -0.15, 0)})
+
+    Tween_:Play()
+    delay(time,function()
+        Tweened_:Play()
+        wait(0.5)
+        notification:Destroy()
+        end)
+
+    return notification
+    end)
+end
+
+function Lib:Window(name)
+local MScreen = Instance.new("ScreenGui")
+local MFrame = Instance.new("Frame")
+local UIPad2 = Instance.new("UIPadding")
+local UIList2 = Instance.new("UIListLayout")
+local TopBar = Instance.new("TextLabel")
+local TBText_1 = Instance.new("TextLabel")
+local CloseUI = Instance.new("TextButton")
+local Category = Instance.new("ScrollingFrame")
+local ScrollDifference = Instance.new("TextLabel")
+local CatDifference = Instance.new("TextLabel")
+
+getgenv().Screen_ = MScreen
+MScreen.Parent = CoreGui
+
+MFrame.Name = randomString()
+MFrame.Active = false
+MFrame.BackgroundColor3 = Color3.fromRGB(100,100,100)
+MFrame.BackgroundTransparency = 0.1
+MFrame.AnchorPoint = Vector2.new(0.5,0.5)
+MFrame.Position = UDim2.new(0.5,0,0.5,0)
+MFrame.Size = UDim2.new(0.5,0,0.75,0)
+MFrame.BorderSizePixel = 0
+MFrame.ZIndex = 1
+MFrame.Parent = MScreen
+
+Lib:addRound(MFrame)
+
+Category.Name = randomString()
+Category.Active = false
+Category.BackgroundTransparency = 0.1
+Category.BackgroundColor3 = Color3.fromRGB(25,25,25)
+Category.AnchorPoint = Vector2.new(0.5,0.5)
+Category.Position = UDim2.new(0.2,0,0.54,0)
+Category.Size = UDim2.new(0.4,0,0.915,0)
+Category.VerticalScrollBarPosition = "Left"
+Category.BorderSizePixel = 0
+Category.VerticalScrollBarInset = "Always"
+Category.ElasticBehavior = "Always"
+Category.ZIndex = 1
+Category.Parent = MFrame
+
+Lib:addRound(Category)
+
+TopBar.BackgroundTransparency = 0.1
+TopBar.Active = false
+TopBar.Text = ""
+TopBar.Size = UDim2.new(1,0,0.08,0)
+TopBar.Position = UDim2.new(0,0,0,0)
+TopBar.BorderColor3 = Color3.fromRGB(25,25,25)
+TopBar.ZIndex = 1
+TopBar.Parent = MFrame
+
+Lib:addRound(TopBar)
+
+TBText_1.TextColor3 = Color3.fromRGB(255,255,255)
+TBText_1.BackgroundColor3 = Color3.fromRGB(8,8,8)
+TBText_1.BackgroundTransparency = 0.1
+TBText_1.Active = false
+TBText_1.Text = name or "Telligences"
+TBText_1.TextWrapped = true
+TBText_1.Size = UDim2.new(1,0,0.08,0)
+TBText_1.Position = UDim2.new(0,0,0,0)
+TBText_1.BorderSizePixel = 0
+TBText_1.TextSize = 12
+TBText_1.TextStrokeColor3 = Color3.fromRGB(255,225,255)
+TBText_1.TextStrokeTransparency = 0.95
+TBText_1.ZIndex = 1
+TBText_1.Parent = MFrame
+
+Lib:addRound(TBText_1)
+
+CatDifference.TextColor3 = Color3.fromRGB(0,0,0)
+CatDifference.BackgroundColor3 = Color3.fromRGB(75,75,75)
+CatDifference.BackgroundTransparency = 0.8
+CatDifference.Active = false
+CatDifference.Text = ""
+CatDifference.Size = UDim2.new(0.025,0,0.918,0)
+CatDifference.Position = UDim2.new(0,0,0.08,0)
+CatDifference.BorderSizePixel = 0
+CatDifference.TextSize = 12
+CatDifference.TextStrokeColor3 = Color3.fromRGB(255,225,255)
+CatDifference.TextStrokeTransparency = 0.95
+CatDifference.ZIndex = 1
+CatDifference.Parent = MFrame
+
+Lib:addRound(CatDifference)
+
+ScrollDifference.TextColor3 = Color3.fromRGB(255,255,255)
+ScrollDifference.BackgroundColor3 = Color3.fromRGB(8,8,8)
+ScrollDifference.BackgroundTransparency = 0.7
+ScrollDifference.Active = false
+ScrollDifference.Text = ""
+ScrollDifference.Size = UDim2.new(0.025,0,0.918,0)
+ScrollDifference.Position = UDim2.new(0.975,0,0.08,0)
+ScrollDifference.BorderSizePixel = 0
+ScrollDifference.TextSize = 12
+ScrollDifference.TextStrokeColor3 = Color3.fromRGB(255,225,255)
+ScrollDifference.TextStrokeTransparency = 0.95
+ScrollDifference.ZIndex = 2
+ScrollDifference.Parent = MFrame
+
+Lib:addRound(ScrollDifference)
+
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+local Screen_Gui = Instance.new("ScreenGui")
+local Background = Instance.new("TextLabel")
+local Draggablebtn = Instance.new("TextLabel")
+local UICorner = Instance.new("UICorner")
+local UICorner_2 = Instance.new("UICorner")
+local BlackPart = Instance.new("TextButton")
+local UICorner_3 = Instance.new("UICorner")
+
+getgenv().Screens_ = Screen_Gui
+
+--Properties:
+Screen_Gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+Screen_Gui.Enabled = false
+Screen_Gui.Parent = game:GetService("CoreGui")
+
+Background.Name = "Background"
+Background.Active = true
+Background.BackgroundColor3 = Color3.fromRGB(33, 33, 33)
+Background.Position = UDim2.new(0,0,0.25,0)
+Background.Size = UDim2.new(1,0,0.75,0)
+Background.Font = Enum.Font.SourceSans
+Background.Text = ""
+Background.TextColor3 = Color3.fromRGB(0, 0, 0)
+Background.TextSize = 14.000
+Background.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
+Background.Parent = Draggablebtn
+
+Draggablebtn.Name = "RedPart"
+Draggablebtn.Active = true
+Draggablebtn.BackgroundColor3 = Color3.fromRGB(75, 50, 25)
+Draggablebtn.Size = UDim2.new(0.05,0,0.1,0)
+Draggablebtn.Font = Enum.Font.SourceSans
+Draggablebtn.Text = ""
+Draggablebtn.AnchorPoint = Vector2.new(0.5,0.5)
+Draggablebtn.Position = UDim2.new(0.5,0,0.5,0)
+Draggablebtn.TextColor3 = Color3.fromRGB(0, 0, 0)
+Draggablebtn.TextSize = 14.000
+Draggablebtn.Parent = Screen_Gui
+
+UICorner.CornerRadius = UDim.new(0, 4)
+UICorner.Parent = Draggablebtn
+
+UICorner_2.CornerRadius = UDim.new(0, 4)
+UICorner_2.Parent = Background
+
+BlackPart.Name = "BlackPart"
+BlackPart.Active = true
+BlackPart.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
+BlackPart.Position = UDim2.new(0.05, 0, 0.3, 0)
+BlackPart.Size = UDim2.new(0.9,0,0.65,0)
+BlackPart.Font = Enum.Font.SourceSans
+BlackPart.Text = "Open"
+BlackPart.ZIndex = 2
+BlackPart.TextColor3 = Color3.fromRGB(255,255,255)
+BlackPart.TextSize = 14.000
+BlackPart.Parent = Draggablebtn
+
+BlackPart.MouseButton1Click:Connect(function()
+    MScreen.Enabled = true
+    Screen_Gui.Enabled = false
+    end)
+
+UICorner_3.CornerRadius = UDim.new(0,10)
+UICorner_3.Parent = BlackPart
+
+-- Scripts:
+local UserInputService = game:GetService("UserInputService")
+local runService = (game:GetService("RunService"));
+
+local gui = Draggablebtn
+
+local dragging
+local dragInput
+local dragStart
+local startPos
+
+function Lerp(a, b, m)
+return a + (b - a) * m
+end;
+
+local lastMousePos
+local lastGoalPos
+local DRAG_SPEED = (50); -- // The speed of the UI darg.
+function Update(dt)
+if not (startPos) then return end;
+if not (dragging) and (lastGoalPos) then
+gui.Position = UDim2.new(startPos.X.Scale, Lerp(gui.Position.X.Offset, lastGoalPos.X.Offset, dt * DRAG_SPEED), startPos.Y.Scale, Lerp(gui.Position.Y.Offset, lastGoalPos.Y.Offset, dt * DRAG_SPEED))
+return
+end;
+
+local delta = (lastMousePos - UserInputService:GetMouseLocation())
+local xGoal = (startPos.X.Offset - delta.X);
+local yGoal = (startPos.Y.Offset - delta.Y);
+lastGoalPos = UDim2.new(startPos.X.Scale, xGoal, startPos.Y.Scale, yGoal)
+gui.Position = UDim2.new(startPos.X.Scale, Lerp(gui.Position.X.Offset, xGoal, dt * DRAG_SPEED), startPos.Y.Scale, Lerp(gui.Position.Y.Offset, yGoal, dt * DRAG_SPEED))
+end;
+
+gui.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+    dragging = true
+    dragStart = input.Position
+    startPos = gui.Position
+    lastMousePos = UserInputService:GetMouseLocation()
+
+    input.Changed:Connect(function()
+        if input.UserInputState == Enum.UserInputState.End then
+        dragging = false
+        end
+        end)
+    end
+    end)
+
+gui.InputChanged:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+    dragInput = input
+    end
+    end)
+
+runService.Heartbeat:Connect(Update)
+
+CloseUI.TextColor3 = Color3.fromRGB(255,255,255)
+CloseUI.BackgroundColor3 = Color3.fromRGB(50,50,50)
+CloseUI.BackgroundTransparency = 0
+CloseUI.Active = true
+CloseUI.Text = "X"
+CloseUI.Size = UDim2.new(0.05,0,0.9,0)
+CloseUI.Position = UDim2.new(0.94,0,0.05,0)
+CloseUI.BorderSizePixel = 0
+CloseUI.TextSize = 12
+CloseUI.TextStrokeColor3 = Color3.fromRGB(255,225,255)
+CloseUI.TextStrokeTransparency = 0.95
+CloseUI.SizeConstraint = "RelativeXY"
+CloseUI.ZIndex = 2
+CloseUI.Parent = TopBar
+
+Lib:addRound(CloseUI)
+
+function Cloth()
+MScreen.Enabled = false
+Screen_Gui.Enabled = true
+end
+
+CloseUI.MouseButton1Click:Connect(Cloth)
+
+UIPad2.Name = randomString()
+UIPad2.Parent = Category -- 2
+UIPad2.PaddingTop = UDim.new(0,5)
+UIPad2.PaddingLeft = UDim.new(0,8)
+
+UIList2.Name = randomString()
+UIList2.Parent = Category -- 2
+UIList2.Padding = UDim.new(0,1)
+
+function Lib:Category(label)
+local Inside = Instance.new("ScrollingFrame")
+local Categories = Instance.new("TextButton")
+local UIPad = Instance.new("UIPadding")
+local UIList = Instance.new("UIListLayout")
+local Text = Instance.new("TextLabel")
+local parentname
+local label = label or "Category"
+local Hash_ = string.len(tostring(label))
+local Scaler = false
+if Hash_ >= 24 then
+Scaler = true
+else
+    Scaler = false
+end
+
+UIPad.Name = randomString()
+UIPad.Parent = Inside -- 1
+UIPad.PaddingTop = UDim.new(0,5)
+UIPad.PaddingLeft = UDim.new(0,8)
+
+UIList.Name = randomString()
+UIList.Parent = Inside -- 1
+UIList.Padding = UDim.new(0,5)
+UIList.SortOrder = "LayoutOrder"
+
+Inside.Name = randomString()
+Inside.Active = false
+Inside.BackgroundTransparency = 0
+Inside.BackgroundColor3 = Color3.fromRGB(35,35,35)
+Inside.AnchorPoint = Vector2.new(0.5,0.5)
+Inside.Position = UDim2.new(0.7,0,0.54,0)
+Inside.Size = UDim2.new(0.6,0,0.915,0)
+Inside.BorderSizePixel = 0
+Inside.VerticalScrollBarInset = "Always"
+Inside.ElasticBehavior = "Always"
+Inside.CanvasSize = UDim2.new(0,0,0,0)
+Inside.SizeConstraint = "RelativeXY"
+Inside.ZIndex = 1
+Inside.Parent = MFrame
+
+Lib:addRound(Inside)
+
+parentname = Inside.Name
+
+Inside.ChildAdded:Connect(function(child)
+    Inside.CanvasSize = UDim2.new(0,0,0,UIList.AbsoluteContentSize.Y + child.Size.Y.Offset + UIList.Padding.Offset + 65)
+    end)
+
+table.insert(Insides,Inside)
+
+getgenv().Called = getgenv().Called + 1
+if getgenv().Called >= 2 then
+Inside.Visible = false
+for i, v in pairs(Inside:GetChildren()) do
+if v.ClassName ~= "UIPadding" and v.ClassName ~= "UIListLayout" and v.ClassName ~= "UICorner" then
+v.Visible = false
+end
+end
+end
+
+Categories.TextColor3 = Color3.fromRGB(255,255,255)
+Categories.BackgroundColor3 = Color3.fromRGB(8,8,8)
+Categories.BackgroundTransparency = 0
+Categories.Active = false
+Categories.Text = label or "Button"
+Categories.TextScaled = Scaler
+Categories.TextWrapped = true
+Categories.TextStrokeTransparency = 0.95
+Categories.Size = UDim2.new(0.97,0,0.16,0)
+Categories.Position = UDim2.new(0,0,0,0)
+Categories.BorderSizePixel = 0
+Categories.TextSize = 10
+Categories.TextStrokeColor3 = Color3.fromRGB(255,225,255)
+Categories.TextStrokeTransparency = 0.95
+Categories.SizeConstraint = "RelativeXX"
+Categories.ZIndex = 1
+Categories.Parent = Category
+
+Lib:addRound(Categories)
+
+function Click()
+for i, ins in pairs(Insides) do
+ins.Visible = false
+for i, v in pairs(ins:GetDescendants()) do
+if v.ClassName ~= "UIPadding" and v.ClassName ~= "UIListLayout" and v.ClassName ~= "UICorner" and v.Name ~= "Dropper" then
+v.Visible = false
+end
+end
+end
+
+for i, v in pairs(Inside:GetDescendants()) do
+if v.ClassName ~= "UIPadding" and v.ClassName ~= "UIListLayout" and v.ClassName ~= "UICorner" and v.Name ~= "Dropper" then
+v.Visible = true
+end
+end
+
+Inside.Visible = true
+end
+
+Categories.MouseButton1Click:Connect(Click)
+
+local Category = {}
+
+function Category:Create()
+local Features = {}
+
+function Features:Button(label,cb,main)
+local Imb = Instance.new("TextButton")
+local Text = Instance.new("TextLabel")
+local Hash_ = string.len(tostring(label))
+local Scaler = false
+if Hash_ >= 37 then
+Scaler = true
+else
+    Scaler = false
+end
+
+Imb.TextColor3 = Color3.fromRGB(255,255,255)
+Imb.BackgroundColor3 = Color3.fromRGB(8,8,8)
+Imb.BackgroundTransparency = 0.1
+Imb.Active = false
+Imb.Text = label or "Button"
+Imb.TextScaled = Scaler
+Imb.TextWrapped = true
+Imb.TextStrokeTransparency = 0.95
+Imb.Size = UDim2.new(0.97,0,0.1,0)
+Imb.Position = UDim2.new(0,0,0,0)
+Imb.BorderSizePixel = 0
+Imb.TextSize = 12
+Imb.TextStrokeColor3 = Color3.fromRGB(255,225,255)
+Imb.TextStrokeTransparency = 0.95
+Imb.SizeConstraint = "RelativeXX"
+Imb.ZIndex = 1
+Imb.Parent = Inside
+
+Lib:addRound(Imb)
+
+if main then
+main(Imb)
+end
+
+local function Click()
+if cb ~= nil then
+cb(Imb)
+else
+    game:GetService("StarterGui"):SetCore("DevConsoleVisible",true)
+end
+end
+
+Imb.MouseButton1Click:Connect(Click)
+end
+
+function Features:Toggle(label,state,cb,main)
+local Imb = Instance.new("TextButton")
+local Text = Instance.new("TextLabel")
+local ToggleBox = Instance.new("TextLabel")
+local Checked = Instance.new("TextLabel")
+local Checker = Instance.new("TextLabel")
+local state = state or false
+local cb = cb or function() end
+local Hash_ = string.len(tostring(label))
+local Scaler = false
+if Hash_ >= 37 then
+Scaler = true
+else
+    Scaler = false
+end
+
+Imb.TextColor3 = Color3.fromRGB(255,255,255)
+Imb.BackgroundColor3 = Color3.fromRGB(8,8,8)
+Imb.BackgroundTransparency = 0.1
+Imb.Active = false
+Imb.Text = label or "Button"
+Imb.TextScaled = Scaler
+Imb.TextWrapped = true
+Imb.TextStrokeTransparency = 0.95
+Imb.Size = UDim2.new(0.97,0,0.1,0)
+Imb.Position = UDim2.new(0,0,0,0)
+Imb.BorderSizePixel = 0
+Imb.TextSize = 12
+Imb.TextStrokeColor3 = Color3.fromRGB(255,225,255)
+Imb.TextStrokeTransparency = 0.95
+Imb.SizeConstraint = "RelativeXX"
+Imb.ZIndex = 1
+Imb.Parent = Inside
+
+if main then
+main(Imb)
+end
+
+Lib:addRound(Imb)
+
+ToggleBox.TextColor3 = Color3.fromRGB(255,255,255)
+ToggleBox.BackgroundColor3 = Color3.fromRGB(80,80,80)
+ToggleBox.BackgroundTransparency = 0
+ToggleBox.Active = false
+ToggleBox.Text = ""
+ToggleBox.Size = UDim2.new(0.08,0,0.08,0)
+ToggleBox.Position = UDim2.new(0.9,0,0.125,0)
+ToggleBox.BorderSizePixel = 0.5
+ToggleBox.TextSize = 12
+ToggleBox.TextStrokeColor3 = Color3.fromRGB(255,225,255)
+ToggleBox.TextStrokeTransparency = 0.95
+ToggleBox.SizeConstraint = "RelativeXX"
+ToggleBox.ZIndex = 1
+ToggleBox.Parent = Imb
+
+Lib:addRound(ToggleBox)
+
+Checked.TextColor3 = Color3.fromRGB(255,255,255)
+Checked.BackgroundColor3 = Color3.fromRGB(8,8,8)
+Checked.BackgroundTransparency = 0
+Checked.Active = false
+Checked.Text = ""
+Checked.Size = UDim2.new(0.9,0,0.9,0)
+Checked.Position = UDim2.new(0.06,0,0.05,0)
+Checked.BorderSizePixel = 0
+Checked.TextSize = 12
+Checked.TextStrokeColor3 = Color3.fromRGB(255,225,255)
+Checked.TextStrokeTransparency = 0
+Checked.SizeConstraint = "RelativeXY"
+Checked.ZIndex = 1
+Checked.Parent = ToggleBox
+
+Lib:addRound2(Checked)
+
+Checker.TextColor3 = Color3.fromRGB(255,255,255)
+Checker.BackgroundColor3 = Color3.fromRGB(0,150,0)
+Checker.BackgroundTransparency = 1
+Checker.Active = false
+Checker.Text = "✓"
+Checker.TextTransparency = 1
+Checker.Size = UDim2.new(0.85,0,0.85,0)
+Checker.Position = UDim2.new(0.075,0,0.075,0)
+Checker.BorderSizePixel = 0
+Checker.TextSize = 18
+Checker.TextStrokeColor3 = Color3.fromRGB(255,225,255)
+Checker.TextStrokeTransparency = 0.95
+Checker.SizeConstraint = "RelativeXX"
+Checker.ZIndex = 1
+Checker.Parent = ToggleBox
+
+Lib:addRound2(Checker)
+
+local TweenInfo = TweenInfo.new(0.16, Enum.EasingStyle.Quart, Enum.EasingDirection.In)
+
+local Stutter = {
+    TextSize = 25,
+    TextTransparency = 0.15
+}
+
+local Stutter2 = {
+    TextSize = 18,
+    TextTransparency = 0
+}
+
+local Tweener = {
+    TextSize = 18,
+    BackgroundTransparency = 0,
+    TextTransparency = 0
+}
+
+local Closer = {
+    TextSize = 18,
+    BackgroundTransparency = 1,
+    TextTransparency = 1
+}
+
+local Stut = TweenService:Create(Checker, TweenInfo, Stutter)
+local Stut2 = TweenService:Create(Checker, TweenInfo, Stutter2)
+local Tween = TweenService:Create(Checker, TweenInfo, Tweener)
+local Off = TweenService:Create(Checker, TweenInfo, Closer)
+
+if state then
+task.spawn(function()
+    if state then
+    Tween:Play()
+    else
+        Off:Play()
+    end
+    end)
+
+task.spawn(function()
+    while state do
+    wait(0.2)
+    Stut:Play()
+    wait(0.2)
+    Stut2:Play()
+    wait()
+    if not state or state == false then
+    Off:Play()
+    break
+    end
+    end
+    end)
+end
+
+function Click()
+task.spawn(function()
+    state = not state
+    cb(state,Imb)
+    end)
+
+task.spawn(function()
+    if state then
+    Tween:Play()
+    else
+        Off:Play()
+    end
+    end)
+
+task.spawn(function()
+    while state do
+    wait(0.2)
+    Stut:Play()
+    wait(0.2)
+    Stut2:Play()
+    wait()
+    if not state or state == false then
+    Off:Play()
+    break
+    end
+    end
+    end)
+end
+
+function Checkering()
+if state == false or not state then
+Off:Play()
+end
+end
+
+task.spawn(function()
+    RunService.RenderStepped:Connect(Checkering)
+    end)
+
+Imb.MouseButton1Click:Connect(Click)
+end
+
+function Features:Input(label,cb,main)
+local InputContainer = Instance.new("TextBox")
+local Hash_ = string.len(tostring(label))
+local Scaler = false
+if Hash_ >= 21 then
+Scaler = true
+else
+    Scaler = false
+end
+
+InputContainer.Name = "Input"
+InputContainer.BackgroundColor3 = Color3.fromRGB(10,15,10)
+InputContainer.BorderSizePixel = 0
+InputContainer.TextColor3 = Color3.fromRGB(100,100,100)
+InputContainer.Size = UDim2.new(0.97, 0, 0.1, 0)
+InputContainer.Text = label or "Input"
+InputContainer.TextScaled = Scaler
+InputContainer.TextWrapped = true
+InputContainer.TextStrokeTransparency = 0.95
+InputContainer.PlaceholderText = "Enter to confirm!"
+InputContainer.MultiLine = false
+InputContainer.SizeConstraint = "RelativeXX"
+InputContainer.ZIndex = 1
+InputContainer.Parent = Inside
+getgenv().Input_ = InputContainer
+
+if main then
+main(InputContainer)
+end
+
+Lib:addRound2(InputContainer)
+
+local inputterist
+
+InputContainer.Changed:connect(function(text)
+    local text = InputContainer.Text
+    local Hash_ = string.len(tostring(text))
+    local Scaler = false
+    if Hash_ >= 21 then
+    Scaler = true
+    else
+        Scaler = false
+    end
+    inputterist = text
+    InputContainer.TextSize = 18
+    end)
+
+InputContainer.FocusLost:Connect(function(enterPressed, inputThatCausedFocusLost)
+    if enterPressed then
+    cb(inputterist,InputContainer)
+    InputContainer.TextColor3 = Color3.fromRGB(255,255,255)
+    InputContainer.TextSize = 18
+    InputContainer.PlaceholderText = "..."
+    elseif inputThatCauseFocusLost == InputObject then
+
+    end
+    end)
+
+end
+
+function Features:Slider(label,min,max,default,cb)
+local Box = Instance.new("TextLabel")
+local Bar = Instance.new("TextButton")
+local Scroll = Instance.new("TextLabel")
+local Number = Instance.new("TextLabel")
+local Label = Instance.new("TextLabel")
+local default = default or 0
+local defstring = default
+local min = min or 0
+local max = max or 100
+if default > max then
+default = max
+defstring = tostring(default.."+")
+end
+if default < min then
+default = min
+defstring = tostring(default.."-")
+end
+
+local Hash_ = string.len(tostring(label))
+local Scaler = false
+if Hash_ >= 30 then
+Scaler = true
+else
+    Scaler = false
+end
+
+Box.TextColor3 = Color3.fromRGB(255,55,25)
+Box.BackgroundColor3 = Color3.fromRGB(12,12,12)
+Box.BackgroundTransparency = 0.1
+Box.Active = false
+Box.Text = ""
+Box.Size = UDim2.new(0.97,0,0.135,0)
+Box.Position = UDim2.new(0,0,0,0)
+Box.BorderSizePixel = 0
+Box.TextSize = 12
+Box.TextStrokeColor3 = Color3.fromRGB(255,225,255)
+Box.TextStrokeTransparency = 0.95
+Box.SizeConstraint = "RelativeXX"
+Box.ZIndex = 1
+Box.Parent = Inside
+
+Lib:addRound2(Box)
+
+Bar.TextColor3 = Color3.fromRGB(55,55,255)
+Bar.BackgroundColor3 = Color3.fromRGB(29,29,29)
+Bar.BackgroundTransparency = 0.1
+Bar.Active = false
+Bar.Text = ""
+Bar.Size = UDim2.new(0.91,0,0.25,0)
+Bar.Position = UDim2.new(0.04,0,0.45,0)
+Bar.BorderSizePixel = 0
+Bar.TextSize = 12
+Bar.TextStrokeColor3 = Color3.fromRGB(255,225,255)
+Bar.TextStrokeTransparency = 0.95
+Bar.SizeConstraint = "RelativeXY"
+Bar.ZIndex = 1
+Bar.Parent = Box
+
+Lib:addRound(Bar)
+
+Scroll.TextColor3 = Color3.fromRGB(255,55,55)
+Scroll.BackgroundColor3 = Color3.fromRGB(176,176,176)
+Scroll.BackgroundTransparency = 0.1
+Scroll.Active = false
+Scroll.Text = ""
+Scroll.Size = UDim2.new(0.05,0,1.35,0)
+local Accuracy = default / 1000 + 1
+Scroll.Position = UDim2.new(default / max / Accuracy,0,-0.2,0)
+Scroll.BorderSizePixel = 0
+Scroll.TextSize = 12
+Scroll.TextStrokeColor3 = Color3.fromRGB(255,225,255)
+Scroll.TextStrokeTransparency = 0.95
+Scroll.SizeConstraint = "RelativeXY"
+Scroll.ZIndex = 1
+Scroll.Parent = Bar
+
+Number.TextColor3 = Color3.fromRGB(174,174,174)
+Number.BackgroundColor3 = Color3.fromRGB(8,8,8)
+Number.BackgroundTransparency = 1
+Number.Active = false
+Number.Text = defstring.." / "..max
+Number.Size = UDim2.new(0.97,0,0.05,0)
+Number.Position = UDim2.new(0.35,0,0.05,0)
+Number.BorderSizePixel = 0
+Number.TextSize = 9.5
+Number.TextScaled = true
+Number.TextWrapped = true
+Number.TextStrokeColor3 = Color3.fromRGB(255,225,255)
+Number.TextStrokeTransparency = 0.95
+Number.SizeConstraint = "RelativeXX"
+Number.ZIndex = 1
+Number.Parent = Box
+
+Label.TextColor3 = Color3.fromRGB(255,255,255)
+Label.BackgroundColor3 = Color3.fromRGB(8,8,8)
+Label.BackgroundTransparency = 0.5
+Label.Active = false
+Label.Text = label or "Input"
+Label.TextScaled = Scaler
+Label.TextWrapped = true
+Label.TextStrokeTransparency = 0.95
+Label.Size = UDim2.new(0.75,0,0.025,0)
+Label.Position = UDim2.new(0,0,0.15,0)
+Label.BorderSizePixel = 0
+Label.TextSize = 10
+Label.TextStrokeColor3 = Color3.fromRGB(255,225,255)
+Label.TextStrokeTransparency = 0.95
+Label.SizeConstraint = "RelativeXX"
+Label.ZIndex = 1
+Label.Parent = Box
+
+Lib:addRound(Scroll)
+
+local down = false
+
+Bar.MouseButton1Down:connect(function()
+    down = true
+    while down and RunService.RenderStepped:wait() do
+    Inside.ScrollingEnabled = false
+    percentage = math.clamp(((mouse.X - Bar.AbsolutePosition.X) / Bar.AbsoluteSize.X), 0, 1)
+    Scroll:TweenPosition(UDim2.new(percentage/Accuracy, 0, -0.2, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Linear, 0.05)
+    value = (percentage * (max - min)) + min
+    Number.Text = string.format("%d / %d", value, max)
+    end
+    if down == true then
+    Inside.ScrollingEnabled = true
+    end
+    end)
+
+Mouse.Button1Up:connect(function()
+    if down == true then
+    down = false
+    Inside.ScrollingEnabled = true
+    end
+    end)
+
+local InputBeggar
+InputBeggar = UserInputService.InputBegan:Connect(function(input)
+    input.Changed:Connect(function()
+        if input.UserInputState == Enum.UserInputState.End then
+        Inside.ScrollingEnabled = true
+        if down == true then
+        task.spawn(function()
+            pcall(cb, math.floor(value))
+            end)
+        down = false
+        end
+        end
+        end)
+    end)
+
+end
+
+DIndex = 4
+function Features:Dropdown(label,tables,cb)
+-- Instances:
+local DropFrame = Instance.new("Frame")
+local mainDropDown = Instance.new("TextLabel")
+local Label = Instance.new("TextLabel")
+local Dropper = Instance.new("ScrollingFrame")
+local closeopenbtn = Instance.new("TextButton")
+local UIPadder = Instance.new("UIPadding")
+local UIListing = Instance.new("UIListLayout")
+local venter = 0
+local toggling = false
+local Hash_ = string.len(tostring(label))
+local Scaler = false
+if Hash_ >= 37 then
+Scaler = true
+else
+    Scaler = false
+end
+
+--Properties:
+
+DropFrame.Name = "mainDropDown"
+DropFrame.BackgroundColor3 = Color3.fromRGB(0,50,0)
+DropFrame.Position = UDim2.new(0.239051089, 0, 0.123339675, 0)
+DropFrame.Size = UDim2.new(0.97, 0, 0.09,0)
+DropFrame.BorderSizePixel = 0
+DropFrame.ZIndex = 3
+DropFrame.Parent = Inside
+
+Lib:addRound2(DropFrame)
+
+mainDropDown.Name = "mainDropDown"
+mainDropDown.Active = true
+mainDropDown.Text = ""
+mainDropDown.BackgroundColor3 = Color3.fromRGB(10,10,10)
+mainDropDown.Position = UDim2.new(0, 0, 0, 0)
+mainDropDown.Size = UDim2.new(1, 0, 1, 0)
+mainDropDown.BorderSizePixel = 0
+mainDropDown.ZIndex = 3
+mainDropDown.Parent = DropFrame
+
+Lib:addRound2(mainDropDown)
+
+Label.Name = randomString()
+Label.Text = label or "Dropdown"
+Label.TextWrapped = true
+Label.TextScaled = Scaler
+Label.TextColor3 = Color3.fromRGB(255,255,255)
+Label.TextStrokeTransparency = 0.95
+Label.BackgroundColor3 = Color3.fromRGB(21,21,21)
+Label.BackgroundTransparency = 1
+Label.Position = UDim2.new(0,0,0,0)
+Label.Size = UDim2.new(1,0,1,0)
+Label.BorderSizePixel = 0
+Label.ZIndex = 3
+Label.Parent = mainDropDown
+
+Dropper.Active = true
+Dropper.Name = "Dropper"
+Dropper.BackgroundColor3 = Color3.fromRGB(21,21,21)
+Dropper.Position = UDim2.new(0,0,1,0)
+Dropper.Size = UDim2.new(1,0,1,0)
+Dropper.ZIndex = 2
+Dropper.BorderSizePixel = 0
+Dropper.Visible = false
+Dropper.CanvasSize = UDim2.new(0,0,0,0)
+Dropper.Parent = mainDropDown
+
+Lib:addRound(Dropper)
+
+UIPadder.Parent = Dropper
+UIPadder.PaddingLeft = UDim.new(0,8)
+UIPadder.PaddingTop = UDim.new(0,3)
+
+UIListing.Parent = Dropper
+UIListing.Padding = UDim.new(0,3)
+
+closeopenbtn.Name = "closeopenbtn"
+closeopenbtn.BackgroundColor3 = Color3.fromRGB(42, 42, 42)
+closeopenbtn.Position = UDim2.new(0.9, 0, 0.05, 0)
+closeopenbtn.Size = UDim2.new(0.09,0,0.9,0)
+closeopenbtn.Font = Enum.Font.SourceSans
+closeopenbtn.Text = "<"
+closeopenbtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+closeopenbtn.TextSize = 13.000
+closeopenbtn.SizeConstraint = "RelativeXY"
+closeopenbtn.TextWrapped = true
+closeopenbtn.ZIndex = 3
+closeopenbtn.Parent = mainDropDown
+
+Lib:addRound2(closeopenbtn)
+
+for i, v in pairs(tables) do
+local Imb = Instance.new("TextButton")
+local Text = Instance.new("TextLabel")
+local Hashs_ = string.len(tostring(label))
+local Scalers = false
+if Hashs_ >= 37 then
+Scalers = true
+else
+    Scalers = false
+end
+
+Imb.TextColor3 = Color3.fromRGB(255,255,255)
+Imb.BackgroundColor3 = Color3.fromRGB(8,8,8)
+Imb.BackgroundTransparency = 0.1
+Imb.Active = false
+Imb.Name = "Dropped"
+Imb.Text = v or label
+Imb.TextScaled = Scalers
+Imb.TextWrapped = true
+Imb.Size = UDim2.new(0.97,0,0,35)
+Imb.Position = UDim2.new(0,0,0,0)
+Imb.BorderSizePixel = 0
+Imb.TextSize = 12
+Imb.TextStrokeColor3 = Color3.fromRGB(255,225,255)
+Imb.TextStrokeTransparency = 0.95
+Imb.SizeConstraint = "RelativeXX"
+Imb.ZIndex = 4
+Imb.Parent = Dropper
+
+Lib:addRound(Imb)
+
+venter = venter + 1.25
+
+if not toggling then
+Dropper.Size = UDim2.new(1,0,venter,0)
+end
+
+local function Click()
+if cb ~= nil then
+cb(Imb.Text)
+else
+    game:GetService("StarterGui"):SetCore("DevConsoleVisible",true)
+end
+end
+
+Imb.MouseButton1Click:Connect(Click)
+end
+
+-- Scripts:
+
+local function LJKP_fake_script() -- ScreenGui.dropdownhandler
+local script = Instance.new('LocalScript', ScreenGui)
+
+local mainFrame = Dropper
+
+local normal_frame_size = UDim2.new(1,0,1,0)
+local vented_frame_size = UDim2.new(1,0,venter,0)
+
+local normal_closeopenbtn_size = UDim2.new(0, 29, 0, 22)
+local vented_closeopenbtn_size = UDim2.new(0.07, 0, 0.9, 0)
+
+local function closeopen()
+if not toggling then
+task.spawn(function()
+    for i, v in pairs(Dropper:GetChildren()) do
+    if v and v.ClassName ~= "UIPadding" and v.ClassName ~= "UIListLayout" and v.ClassName ~= "UICorner" then
+    v.Visible = false
+    end
+    end
+    end)
+
+task.spawn(function()
+    for i, v in pairs(Dropper:GetChildren()) do
+    if v and v.ClassName ~= "UIPadding" and v.ClassName ~= "UIListLayout" and v.ClassName ~= "UICorner" then
+    wait()
+    v.ZIndex = DIndex
+    v.Visible = true
+    end
+    end
+    end)
+DIndex = DIndex + 1
+
+Dropper.Visible = true
+Dropper.Size = UDim2.new(1,0,venter,0)
+Dropper.Position = UDim2.new(0,0,1,0)
+Dropper.ZIndex = DIndex
+closeopenbtn.Size = vented_closeopenbtn_size
+closeopenbtn.Position = UDim2.new(0.92, 0, 0.05, 0)
+closeopenbtn.Text = "v"
+toggling = true
+else
+    DIndex = DIndex - 1
+task.spawn(function()
+    for i, v in pairs(Dropper:GetChildren()) do
+    if v and v.ClassName ~= "UIPadding" and v.ClassName ~= "UIListLayout" and v.ClassName ~= "UICorner" then
+    v.ZIndex = 4
+    v.Visible = false
+    end
+    end
+    end)
+Dropper.Visible = false
+Dropper.Position = UDim2.new(0,0,0,0)
+Dropper.ZIndex = 2
+closeopenbtn.Position = UDim2.new(0.9, 0, 0.05, 0)
+closeopenbtn.Size = UDim2.new(0.09,0,0.9,0)
+closeopenbtn.Text = "<"
+toggling = false
+end
+end
+
+closeopenbtn.MouseButton1Down:Connect(closeopen)
+end
+coroutine.wrap(LJKP_fake_script)()
+
+end
+return Features
+end
+return Category
+end
+
+getgenv().ReturnPlayer = function (text)
+for i,v in pairs(game.Players:GetChildren()) do
+if (string.sub(string.lower(v.Name),1,string.len(text))) == string.lower(text) then
+text = v
+return text
+end
+end
+end
+
+return Lib
+end
+
+local Abc = Lib:Window("Telligences")
+
+local Bcd = Abc:Category("1234567890123456789012345")
+
+local Cde = Abc:Category()
+
+local Def = Bcd:Create()
+
+local Efg = Cde:Create()
+
+wait()
+Def:Dropdown(randomString(), {
+    "Ah","Waa","Wwaaaa"
+},function(t)
+    print(t)
+    Lib:Notification("Warning","You've been warned","You've been warned for trying to break the game",5)
+    end)
+
+Def:Dropdown(randomString(), {
+    "true"
+},function(t)
+    while wait() do end
+    end)
+
+Def:Button("123456789012345678901234567890123456789",
+    function()
+    while wait() do end
+    end,
+    function(ui)
+    task.spawn(function()
+        wait(2)
+        ui.Visible = false
+        wait(2)
+        ui.Visible = true
+        end)
+    end)
+
+Def:Slider(randomString(),0,100,50,function()
+    while wait() do end
+    end)
+
+Def:Input(randomString(),function(t)
+    print(t)
+    end)
+
+for i, v in pairs(Insides) do
+print(i,v)
+end
+
+--[[
+Abc:Button("ah",function()
+Image = "http://www.roblox.com/asset/?id=5840446794"
+local DexToggled2 = TweenService:Create(FToggle1_1, DexInfo, Dex_2)
+end)
+
+Slider.MouseButton1Down:connect(function()
+    down = true
+    while down and rs.RenderStepped:wait() do
+    percentage = math.clamp(((mouse.X - Sliding.AbsolutePosition.X) / Sliding.AbsoluteSize.X), 0, 1)
+    Indicator:TweenPosition(UDim2.new(percentage, 0, -0.2, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Linear, 0.05)
+    value = (percentage * (max - min)) + min
+    Value.Text = string.format("%d / %d", value, max)
+    end
+    end)
+
+local InputBeggar
+InputBeggar = UserInputService.InputBegan:Connect(function(input)
+    input.Changed:Connect(function()
+        if input.UserInputState == Enum.UserInputState.End then
+        if down == true then
+        spawn(function()
+            pcall(callback, math.floor(value))
+            end)
+        down = false
+        end
+        end
+        end)
+    end)
+Lib:Notification("Warning","You've been warned","You've been warned for trying to break the game",5)
+    ]]
