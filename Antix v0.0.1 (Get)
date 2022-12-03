@@ -1,4 +1,4 @@
-getgenv().Key = "Vile"
+getgenv().Key = "UwU"
 getgenv().DragSpeed = 25
 --Change drag speed to fix gui disapperance.
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Hosvile/The-telligence/main/Antix%20v0.0.1%20(Obf)"))()
